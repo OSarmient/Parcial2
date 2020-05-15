@@ -69,10 +69,19 @@ def get_by_property(database_name, property, value):
 
 ####Examples
 
+##Create database
 create_database("customers")
+
+##Include customers in customers database
 save_in_database("customers", {"id": "1245125", "name": "Sebastian", "lastname": "Torres"})
 save_in_database("customers", {"id": "1251", "name": "Nicolas", "lastname": "Ochoa"})
 save_in_database("customers", {"id": "23546", "name": "Margarita", "lastname": "Romero"})
 save_in_database("customers", {"id": "12512512", "name": "Luz", "lastname": "Beltran"})
+
+##Get data by uid
 print(get_by_uid("customers", 2))
+
+##Get data with other properties
 print(get_by_property("customers", "name", "Luz"))
+print(get_by_property("customers", "id", "1251"))
+print(get_by_property("customers", "uid", 2))
