@@ -66,3 +66,8 @@ def get_by_property(database_name, property, value):
         print("la base de datos no existe")
         return False
     return False
+
+####EXamples
+
+create_database("customers")
+save_in_database("customers", {"id": "1245125", "name": "Sebastian", "lastname": "Torres"})
