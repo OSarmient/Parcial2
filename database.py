@@ -1,6 +1,7 @@
 import os
 import ast
 
+mode = "dev"
 databases_path = "databases/"
 
 
@@ -12,14 +13,16 @@ def create_database(database_name):
         open(databases_path + database_name + ".txt", "w")
         return True
     else:
-        print("La base de datos ya existe")
+        if mode == "dev":
+            print("La base de datos ya existe")
         return False
 
 
 def get_database(database_name, mode):
     isFile = os.path.isfile(databases_path + database_name + ".txt")
     if isFile == False:
-        print("La base de datos no existe")
+        if mode == "dev":
+            print("La base de datos no existe")
         return False
     else:
         return open(databases_path + database_name + ".txt", mode)
@@ -39,7 +42,8 @@ def save_in_database(database_name, data):
     database = get_database(database_name, "a")
     if get_database(database_name, "a") == False:
         create_database(database_name)
-        print("Se creo la base de datos")
+        if mode == "dev":
+            print("Se creo la base de datos")
     database = get_database(database_name, "a")
     data["uid"] = count_database(database_name)
     database.write(str(data) + "\n")
@@ -52,7 +56,8 @@ def count_database(database_name):
         all_data = database.read().split("\n")
         return len(all_data) - 1
     else:
-        print("La base de datos no existe")
+        if mode == "dev":
+            print("La base de datos no existe")
         return False
 
 
@@ -64,7 +69,8 @@ def get_by_uid(database_name, uid):
             if ast.literal_eval(all_data[i])["uid"] == uid:
                 return ast.literal_eval(all_data[i])
     else:
-        print("la base de datos no existe")
+        if mode == "dev":
+            print("la base de datos no existe")
         return False
     return False
 
@@ -77,7 +83,8 @@ def get_by_property(database_name, property, value):
             if ast.literal_eval(all_data[i])[property] == value:
                 return ast.literal_eval(all_data[i])
     else:
-        print("la base de datos no existe")
+        if mode == "dev":
+            print("la base de datos no existe")
         return False
     return False
 

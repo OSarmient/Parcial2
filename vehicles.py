@@ -5,7 +5,7 @@ import database
 # pasajeros), tipo de combustible, capacidad de pasajeros, capacidad de carga, número de chasis y
 # número de motor.
 
-mode = "dev"
+#mode = "dev"
 database_name = "vehicles"
 props = [
     {
@@ -129,8 +129,7 @@ def show_menu():
 
 
 def start():
-    if mode == "dev":
-        database.create_database(database_name)
+    database.create_database(database_name)
 
     show_menu()
 
