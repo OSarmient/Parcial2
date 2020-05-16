@@ -18,7 +18,7 @@ def create_database(database_name):
         return False
 
 
-def get_database(database_name, mode):
+def get_database(database_name, mode="r"):
     isFile = os.path.isfile(databases_path + database_name + ".txt")
     if isFile == False:
         if mode == "dev":
@@ -75,11 +75,11 @@ def get_by_uid(database_name, uid):
     return False
 
 
-def get_by_property(database_name, property, value):
+def get_by_property(database_name, property="uid", value=""):
     database = get_database(database_name, "r")
     if database != False:
         all_data = database.read().split("\n")
-        for i in range(len(all_data) - 3):
+        for i in range(len(all_data) - 1):
             if ast.literal_eval(all_data[i])[property] == value:
                 return ast.literal_eval(all_data[i])
     else:
@@ -88,21 +88,37 @@ def get_by_property(database_name, property, value):
         return False
     return False
 
-# ####Examples
 
-# ##Create database
-# create_database("customers")
+def get_multi_database_data(database_name, property="uid", value=""):
+    database = get_database(database_name, "r")
+    return_data = []
+    if database != False:
+        all_data = database.read().split("\n")
+        for i in range(len(all_data) - 1):
+            if ast.literal_eval(all_data[i])[property] == value:
+                return_data.append(ast.literal_eval(all_data[i]))
+        return return_data
+    else:
+        if mode == "dev":
+            print("la base de datos no existe")
+        return False
+    return False
 
-# ##Include customers in customers database
-# save_in_database("customers", {"id": "1245125", "name": "Sebastian", "lastname": "Torres"})
-# save_in_database("customers", {"id": "1251", "name": "Nicolas", "lastname": "Ochoa"})
-# save_in_database("customers", {"id": "23546", "name": "Margarita", "lastname": "Romero"})
-# save_in_database("customers", {"id": "12512512", "name": "Luz", "lastname": "Beltran"})
+    # ####Examples
 
-# ##Get data by uid
-# print(get_by_uid("customers", 2))
+    # ##Create database
+    # create_database("customers")
 
-# ##Get data with other properties
-# print(get_by_property("customers", "name", "Luz"))
-# print(get_by_property("customers", "id", "1251"))
-# print(get_by_property("customers", "uid", 2))
+    # ##Include customers in customers database
+    # save_in_database("customers", {"id": "1245125", "name": "Sebastian", "lastname": "Torres"})
+    # save_in_database("customers", {"id": "1251", "name": "Nicolas", "lastname": "Ochoa"})
+    # save_in_database("customers", {"id": "23546", "name": "Margarita", "lastname": "Romero"})
+    # save_in_database("customers", {"id": "12512512", "name": "Luz", "lastname": "Beltran"})
+
+    # ##Get data by uid
+    # print(get_by_uid("customers", 2))
+
+    # ##Get data with other properties
+    # print(get_by_property("customers", "name", "Luz"))
+    # print(get_by_property("customers", "id", "1251"))
+    # print(get_by_property("customers", "uid", 2))
