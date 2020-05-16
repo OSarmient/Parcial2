@@ -104,6 +104,16 @@ def get_multi_database_data(database_name, property="uid", value=""):
         return False
     return False
 
+
+def delete_data_by_uid(database_name, property="uid", value=" "):
+    data_in_database = get_data_in_database(database_name)
+    vehicle = get_by_property(database_name, property, value)
+    data_in_database.pop(vehicle["uid"])
+    write_database = get_database(database_name, "w")
+    write_database.write("")
+    for i in data_in_database:
+        save_in_database(database_name, i)
+
     # ####Examples
 
     # ##Create database

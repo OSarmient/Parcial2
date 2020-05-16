@@ -143,6 +143,16 @@ def get_customer_vehicles():
             bucle = False
 
 
+def delete_vehicle_by_plate():
+    bucle = True
+    while bucle:
+        try:
+            vehicle_plate = str(input("Digita la placa del vehiculo: "))
+            database.delete_data_by_uid(database_name, "placa", vehicle_plate)
+        except NameError:
+            print(NameError)
+
+
 def show_menu():
     print()
     print(" ---- Menu (vehiculos) ---- ")
@@ -150,7 +160,7 @@ def show_menu():
     print("1. Agregar un carro [1]")
     print("2. Ver todos los carros [2]")
     print("3. Buscar carros de un cliente [3]")
-    print("4. Agregar un carro [4]")
+    print("4. Eliminar un vehiculo por su placa [4]")
     print("5. Agregar un carro [5]")
     print("5. Mostrar menú [5]")
     print("6. Salir [6]")
@@ -174,6 +184,8 @@ def start():
                 get_all()
             elif option == 3:
                 get_customer_vehicles()
+            elif option == 4:
+                delete_vehicle_by_plate()
             elif option == 5:
                 show_menu()
             elif option == 6:
