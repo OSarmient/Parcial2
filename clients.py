@@ -48,16 +48,25 @@ def validate_props1(props1):
 
     return error
 
+
 def insert1 ():
     data = {}
+    verify = False
+    noid2 = database.get_data_in_database(database_name)
     for i in props1:
         bucle = True
         while bucle:
             i["value"] = input(i["display"] + ": ")
-            if validate_props1(i) == False:
+            for a in range(len(noid2)):
+                if noid2[a]["noid1"] == i["value"]:
+                    verify = True
+            if validate_props1(i) == False and verify == False:
                 data[i["data"]] = i["value"]
                 bucle = False
-            
+            else:
+                print(
+                    "Ya existe un cliente asociado a este número de identificación")
+                verify = False
     database.save_in_database(database_name, data)
     print("Guardado en la base de datos")
     
