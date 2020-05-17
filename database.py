@@ -80,7 +80,7 @@ def get_by_property(database_name, property="uid", value=""):
     if database != False:
         all_data = database.read().split("\n")
         for i in range(len(all_data) - 1):
-            if ast.literal_eval(all_data[i])[property] == value:
+            if ast.literal_eval(all_data[i])[property].strip() == value:
                 return ast.literal_eval(all_data[i])
     else:
         if mode == "dev":
@@ -95,7 +95,7 @@ def get_multi_database_data(database_name, property="uid", value=""):
     if database != False:
         all_data = database.read().split("\n")
         for i in range(len(all_data) - 1):
-            if ast.literal_eval(all_data[i])[property] == value:
+            if ast.literal_eval(all_data[i])[property].strip() == value:
                 return_data.append(ast.literal_eval(all_data[i]))
         return return_data
     else:
@@ -105,14 +105,17 @@ def get_multi_database_data(database_name, property="uid", value=""):
     return False
 
 
-def delete_data_by_uid(database_name, property="uid", value=" "):
+def delete_data_by_property(database_name, property="uid", value=" "):
     data_in_database = get_data_in_database(database_name)
-    vehicle = get_by_property(database_name, property, value)
-    data_in_database.pop(vehicle["uid"])
-    write_database = get_database(database_name, "w")
-    write_database.write("")
-    for i in data_in_database:
-        save_in_database(database_name, i)
+    row = get_by_property(database_name, property, value)
+    if row != False:
+        data_in_database.pop(row["uid"])
+        write_database = get_database(database_name, "w")
+        write_database.write("")
+        for i in data_in_database:
+            save_in_database(database_name, i)
+    else:
+        print("No existe en la base de datos")
 
     # ####Examples
 

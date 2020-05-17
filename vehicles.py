@@ -12,67 +12,78 @@ props = [
         "data": "cliente",
         "display": "Digite el numero de identificación del cliente",
         "value": "",
-        "type": "int"
+        "type": "string",
+        "ajust": "12"
     },
     {
         "data": "placa",
         "display": "Digite el numero de la placa",
         "value": "",
-        "type": "int"
+        "type": "int",
+        "ajust": "6"
     },
     {
         "data": "marca",
         "display": "Digite el nombre de la marca",
         "value": "",
-        "type": "string"
+        "type": "string",
+        "ajust": "15"
     },
     {
         "data": "modelo",
         "display": "Digite el modelo del automovil",
         "value": "",
-        "type": "string"
+        "type": "string",
+        "ajust": "15"
     },
     {
         "data": "cilindrada",
         "display": "Digite la cilindrada",
         "value": "",
-        "type": "int"
+        "type": "int",
+        "ajust": "6"
     },
     {
         "data": "color",
         "display": "Digite el color",
         "value": "",
-        "type": "string"
+        "type": "string",
+        "ajust": "10"
     },
     {
         "data": "tipo",
         "display": "Digite el tipo de automovil (servicio)",
         "value": "",
-        "type": "string"
+        "type": "string",
+        "ajust": "30"
     },
     {
         "data": "combustible",
         "display": "Digite el tipo de combustible",
         "value": "",
-        "type": "string"
+        "type": "string",
+        "ajust": "12"
     },
     {
         "data": "pasajeros",
         "display": "Digite el numero de pasajeros",
         "value": "",
-        "type": "int"
+        "type": "int",
+        "ajust": "2"
     },
     {
         "data": "chasis",
         "display": "Digite el numero de chasis",
         "value": "",
-        "type": "int"
+        "type": "int",
+        "ajust": "3"
     },
     {
         "data": "motor",
         "display": "Digite el numero de motor",
         "value": "",
-        "type": "int"
+        "type": "int",
+        "ajust": "3"
     }
 ]
 
@@ -85,6 +96,12 @@ def validate_prop(prop):
     if prop["type"] == "string" and type(prop["value"]) == prop["type"]:
         error = True
         print("El valor de " + prop["data"] + " es invalido")
+
+    if "ajust" in prop and int(prop["ajust"]) < len(prop["value"]):
+        print(
+            "Superaste el limite de caracteres (Limite: " + prop["ajust"] + ")")
+        error = True
+
     return error
 
 
@@ -95,7 +112,10 @@ def insert():
         while bucle:
             i["value"] = input(i["display"] + ": ")
             if validate_prop(i) == False:
-                data[i["data"]] = i["value"]
+                if "ajust" in i:
+                    data[i["data"]] = i["value"].ljust(int(i["ajust"]))
+                else:
+                    data[i["data"]] = i["value"]
                 bucle = False
 
     database.save_in_database(database_name, data)
@@ -147,10 +167,17 @@ def delete_vehicle_by_plate():
     bucle = True
     while bucle:
         try:
+            print("Digite s en cualquier momento para salir.")
             vehicle_plate = str(input("Digita la placa del vehiculo: "))
-            database.delete_data_by_uid(database_name, "placa", vehicle_plate)
+
+            if vehicle_plate.lower() == "s":
+                database.delete_data_by_property(
+                    database_name, "placa", vehicle_plate)
+            else:
+                bucle = False
+
         except NameError:
-            print(NameError)
+            print("No due posible eliminar el vehiculo.")
 
 
 def show_menu():
