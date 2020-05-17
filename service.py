@@ -1,7 +1,7 @@
 import database
 import invoices
 
-#mode = "dev"
+mode = "dev"
 database_name = "service"
 
 props = [
@@ -9,28 +9,32 @@ props = [
         "data": "numero_servicio",
         "display": "Escriba el codigo que el servicio que deaea: ",
         "value": "",
-        "type": "int"
+        "type": "int",
+        "ajust": "6"
     },
 
     {
         "data": "nombre_servcio",
         "display": "Escriba el nombre de el servicio que desea: ",
         "value": "",
-        "type": "str"
+        "type": "str",
+        "ajust": "25"
     },
 
     {
         "data": "precio_unitario",
         "display": "Escriba cuanto cuaesta el servicio por hora: ",
         "value": "",
-        "type": "int"
+        "type": "int",
+        "ajust": "7"
     },
 
     {
         "data": "horas",
         "display": "Escriba por cuantas horas quire contratar el servicio: ",
         "value": "",
-        "type": "int"
+        "type": "int",
+        "ajust": "2"
     }
 ]
 
@@ -44,9 +48,7 @@ def validate_props(prop):
     if prop["type"] == "string" and type(prop["value", str]) == prop["trype"]:
         print("El valor de " + prop["data"] + " no es valido")
         error = True
-
-    if "ajust" in prop and int(prop["ajust"]) < len(prop["value"]):
-        print("Supero el limite de caracteres")
+        
     return error
 
 
@@ -59,26 +61,28 @@ def insert():
         while bucle:
             i["value"] = input(i["display"] + ": ")
             for a in range(len(SC)):
-                verfy = True
-                print("Ese servicio ya esta registrado")
+                if SC[a]["numero_servicio"].strip() == i["value"]:
+                   verfy = True
+                   print("Este codigo ya existe")
             if validate_props(i) == False and verfy == False:
                 if "ajust" in i:
                     data[i["data"]] = i["value"].ljust(int(i["ajust"]))
                 else:
                     data[i["data"]] = i["value"]
-                bucle = False
-
-        print("Guardado en la base de datos")
-        database.save_in_database(database_name, data)
+                bucle = False 
+            verify = True
+    database.save_in_database(database_name, data)
+    print("GUardado en la base de datos")
 
 
 def get_all():
     data = database.get_data_in_database(database_name)
     for i in data:
         keys = i.keys()
+        print("-------------")
         for j in keys:
-            print(str(j) + ": " + str(i[j]))
-    print()
+            print(str(j) + ": " + str(i[j])) 
+            print("--------------")
 
 
 def get_vehicles_service():
@@ -91,12 +95,10 @@ def get_vehicles_service():
 
         if vehicle_plate.lower() != "+":
             vehicles_service = database.get_multi_database_data(
-                database_name, "vehicle", vehicle_plate)
+                database_name, "numero_servicio", vehicle_plate)
 
             if type(vehicles_service) == list and len(vehicles_service) > 0:
                 print()
-                print("Existen " + str(len(vehicles_service)) +
-                      " servicios asociados a ese vehiculo.")
                 for i in vehicles_service:
                     keys = i.keys()
                     print("----------------")
@@ -135,6 +137,8 @@ def show_menu():
 
 
 def start():
+    if mode == "dev":
+        database.create_database(database_name)
 
     show_menu()
 
@@ -142,9 +146,9 @@ def start():
     while bucle:
 
         try:
-            show_menu()
+            print("5, Mostrarmenu [5]")
             option = int(input("Digita la opcion que desees ejecutar: "))
-            
+            print()
             if option == 1:
                 insert()
             elif option == 2:
@@ -160,5 +164,8 @@ def start():
             elif option == 7:
                 bucle = False
 
-        except:
+        except NameError:
+            print(NameError)
+            print("5. Mostrar menu [5]")
             print("La excepcion digitada es invalida")
+            print()
