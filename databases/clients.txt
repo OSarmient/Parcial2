@@ -5,3 +5,4 @@
 {'noid1': '85', 'name1': 'fef', 'lastname1': 'dwjf', 'address1': 'efw', 'phone1': '124', 'city1': 'gr', 'uid': 4}
 {'noid1': '11', 'name1': 'fweg', 'lastname1': 'wefw', 'address1': 'gwef', 'phone1': '23526', 'city1': 'fege', 'uid': 5}
 {'noid1': '30', 'name1': 'ewf', 'lastname1': 'greg', 'address1': 'ege', 'phone1': '3636', 'city1': 'eger', 'uid': 6}
+{'noid1': '1019153159', 'name1': 'Sebastian', 'lastname1': 'Torres', 'address1': 'Cl16666', 'phone1': '36336', 'city1': 'Bogota', 'uid': 7}

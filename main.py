@@ -13,11 +13,10 @@ def show_menu():
 
 
 bucle = True
-
+show_menu()
 while bucle:
-
     try:
-        print("5. Mostrar menú [5]")
+        print("5. Mostrar menú de modulos [5]")
         option = int(input("Digita la opción que desees ejecutar: "))
         print()
         if option == 1:
@@ -33,6 +32,6 @@ while bucle:
         print()
     except NameError:
         print(NameError)
-        print("5. Mostrar menú [5]")
+        print("5. Mostrar menú de modulos [5]")
         print("La opción digitada es invalida (debe ser un número en el menú).")
         print()
