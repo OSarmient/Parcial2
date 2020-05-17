@@ -49,6 +49,15 @@ def save_in_database(database_name, data):
     database.write(str(data) + "\n")
     return True
 
+def save_in_database2(database_name, data):
+    database = get_database(database_name, "a")
+    if get_database(database_name, "a") == False:
+        create_database(database_name)
+        if mode == "dev":
+            print("Se creo la base de datos")
+    database = get_database(database_name, "a")
+    database.write(str(data) + "\n")
+    return True
 
 def count_database(database_name):
     database = get_database(database_name, "r")
