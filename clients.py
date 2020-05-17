@@ -3,12 +3,12 @@ import database
 #clientes
 
 mode = "dev"
-database_name = "client"
+database_name = "clients"
 
 props1 = [{"data": "noid1",
           "display": "Digite el número de identificación del cliente",
           "value": "",
-           "type": "string"
+           "type": "int"
         },
           {"data": "name1",
           "display": "Digite el nombre",
@@ -48,18 +48,27 @@ def validate_props1(props1):
 
     return error
 
+
 def insert1 ():
     data = {}
+    verify = False
+    noid2 = database.get_data_in_database(database_name)
     for i in props1:
         bucle = True
         while bucle:
             i["value"] = input(i["display"] + ": ")
-            if validate_props1(i) == False:
+            for a in range(len(noid2)):
+                if noid2[a]["noid1"] == i["value"]:
+                    verify = True
+            if validate_props1(i) == False and verify == False:
                 data[i["data"]] = i["value"]
                 bucle = False
-                
-    print("Guardado en la base de datos")
+            else:
+                print(
+                    "Ya existe un cliente asociado a este número de identificación")
+                verify = False
     database.save_in_database(database_name, data)
+    print("Guardado en la base de datos")
     
 def get1_all():
     print()
@@ -70,7 +79,44 @@ def get1_all():
         for j in keys:
             print(str(j) + ": " + str(i[j]))
             print("----------------")
-            print()
+            
+def get1_client():
+    bucle = True
+    while bucle:
+
+        print("Digite s en cualquier momento para salir.")
+        client1 = str(
+            input("Digite el numero de identificación del cliente: "))
+
+        if client1.lower() != "s":
+            client4 = database.get_multi_database_data(
+                database_name, "noid1", client1)
+
+            if type(client4) == list and len(client4) > 0:
+                print()
+                for i in client4:
+                    keys = i.keys()
+                    print("----------------")
+                    for j in keys:
+                        print(str(j) + ": " + str(i[j]))
+                    print("----------------")
+                print()
+            else:
+                print()
+                print("No existe un cliente asociado a este numero de identificación.")
+                print()
+        else:
+            bucle = False
+
+def delete_client1():
+    bucle = True
+    while bucle:
+        try:
+            client1 = str(input("Digita el número de identificación del cliente: "))
+            database.delete_data_by_noid(database_name, "noid1", client1)
+        except NameError:
+            print(NameError)
+        
     
 def show_ops():
     print()
@@ -79,8 +125,9 @@ def show_ops():
     print("1. Registrar un cliente [1]")
     print("2. Ver la lista de clientes [2]")
     print("3. Buscar un cliente [3]")
-    print("4. Mostrar opciones [4]")
-    print("5. Salir [5]")
+    print("4. Borrar un cliente [4]")
+    print("5. Mostrar opciones [5]")
+    print("6. Salir [6]")
     print()
     
 def start1():
@@ -92,19 +139,24 @@ def start1():
     bucle = True
     while bucle:
         try:
-            print("4. Mostrar Menú [4]")
+            print("5. Mostrar Menú [5]")
             option = int(input("Digita la opción que desees ejecutar: "))
+            print()
             if option == 1:
                 insert1()
             elif option == 2:
                 get1_all()
+            elif option == 3:
+                get1_client()
             elif option == 4:
-                show_ops()
+                delete_client1()
             elif option == 5:
+                show_ops()
+            elif option == 6:
                 bucle = False
         except NameError:
             print(NameError)
-            print("4. Mostrar Menú [4]")
+            print("5. Mostrar Menú [5]")
             print("La opción digitada es invalida (debe ser número en las opciones)")
             print()
 
