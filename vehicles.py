@@ -224,6 +224,7 @@ def start():
             elif option == 6:
                 bucle = False
             print()
+
         except NameError:
             print(NameError)
             print("5. Mostrar menú [5]")

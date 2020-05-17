@@ -1,6 +1,6 @@
 import vehicles
 import clients
-import sevice
+import service
 
 
 def show_menu():
@@ -24,7 +24,7 @@ while bucle:
         elif option == 2:
             vehicles.start()
         elif option == 3:
-            sevice.start()
+            service.start()
         elif option == 5:
             show_menu()
         elif option == 6:
