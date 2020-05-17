@@ -107,11 +107,17 @@ def validate_prop(prop):
 
 def insert():
     data = {}
+    verify = False
+    noid2 = database.get_data_in_database(database_name)
     for i in props:
         bucle = True
         while bucle:
             i["value"] = input(i["display"] + ": ")
-            if validate_prop(i) == False:
+            for a in range(len(noid2)):
+                if noid2[a]["placa"].strip() == i["value"]:
+                    verify = True
+                    print("Esta placa ya esta registrada")
+            if validate_prop(i) == False and verify == False:
                 if "ajust" in i:
                     data[i["data"]] = i["value"].ljust(int(i["ajust"]))
                 else:
