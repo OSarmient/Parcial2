@@ -123,6 +123,7 @@ def insert():
                 else:
                     data[i["data"]] = i["value"]
                 bucle = False
+            verify = True
 
     database.save_in_database(database_name, data)
     print("Guardado en la base de datos.")
