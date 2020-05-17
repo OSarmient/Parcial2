@@ -85,7 +85,6 @@ def placa(database_name, customer_id, plate, data):
     ve_li=[]
     ve_li.append(vehicle_list)
     insert_list(ve_li, data)
-    data.pop()
     
 def serv(database_name, data):
     get_all(database_name)
@@ -102,13 +101,13 @@ def serv(database_name, data):
             print("No existe un servicio asociado a este codigo. ")
             print()
     insert_list(vehicles_service, data)
-    data.pop()
     
 def insert_list(lista, data):
     for i in lista:
         keys = i.keys()
         for j in keys:
             data.append(str(j) + ": " + str(i[j]))
+    data.pop()
 
 def get_all(database_name):
     data = database.get_data_in_database(database_name)
@@ -120,4 +119,5 @@ def get_all(database_name):
     print()
             
 relation()
+
     
