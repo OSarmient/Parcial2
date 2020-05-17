@@ -1,0 +1,7 @@
+{'noid1': '20', 'name1': 'javier', 'lastname1': 'molina', 'address1': 'calle 21', 'phone1': '231025', 'city1': 'valledupar', 'uid': 0}
+{'noid1': '1001938663', 'name1': 'fabian', 'lastname1': 'marquez', 'address1': 'calle 13', 'phone1': '3023972305', 'city1': 'valledupar', 'uid': 1}
+{'noid1': '45', 'name1': 'jose', 'lastname1': 'aldair', 'address1': 'calle 90', 'phone1': '305135', 'city1': 'chiquinquira', 'uid': 2}
+{'noid1': '90', 'name1': 'fav', 'lastname1': 'wer', 'address1': 'calle 5', 'phone1': '4523', 'city1': 'dgr', 'uid': 3}
+{'noid1': '85', 'name1': 'fef', 'lastname1': 'dwjf', 'address1': 'efw', 'phone1': '124', 'city1': 'gr', 'uid': 4}
+{'noid1': '11', 'name1': 'fweg', 'lastname1': 'wefw', 'address1': 'gwef', 'phone1': '23526', 'city1': 'fege', 'uid': 5}
+{'noid1': '30', 'name1': 'ewf', 'lastname1': 'greg', 'address1': 'ege', 'phone1': '3636', 'city1': 'eger', 'uid': 6}
