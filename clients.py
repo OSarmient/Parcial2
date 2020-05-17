@@ -1,55 +1,56 @@
 import database
 
-#clientes
+# clientes
 
 mode = "dev"
 database_name = "clients"
 
 props1 = [{"data": "noid1",
-          "display": "Digite el número de identificación del cliente",
-          "value": "",
+           "display": "Digite el número de identificación del cliente",
+           "value": "",
            "type": "int"
-        },
+           },
           {"data": "name1",
-          "display": "Digite el nombre",
-          "value": "",
+           "display": "Digite el nombre",
+           "value": "",
            "type": "string"
-        },
+           },
           {"data": "lastname1",
-          "display": "Digite el apellido",
-          "value": "",
+           "display": "Digite el apellido",
+           "value": "",
            "type": "string"
-        },
+           },
           {"data": "address1",
-          "display": "Digite la dirección",
-          "value": "",
+           "display": "Digite la dirección",
+           "value": "",
            "type": "string"
-        },
+           },
           {"data": "phone1",
-          "display": "Digite el número de telefono",
-          "value": "",
+           "display": "Digite el número de telefono",
+           "value": "",
            "type": "int"
-        },
+           },
           {"data": "city1",
-          "display": "Digite la ciudad",
-          "value": "",
+           "display": "Digite la ciudad",
+           "value": "",
            "type": "string"
-        }
-]
+           }
+          ]
+
 
 def validate_props1(props1):
     error = False
     if props1["type"] == "int" and type(props1["value"]) == props1["type"]:
         print("El valor de " + props1["data"] + " no es valido")
         error = True
-    if props1["type"]=="string" and type(props1["value"]) == props1["type"]:
+    if props1["type"] == "string" and type(props1["value"]) == props1["type"]:
         error = True
         print("El valor de " + props1["data"] + " es invalido")
 
     return error
 
 
-def insert1 ():
+def insert1():
     data = {}
     verify = False
     noid2 = database.get_data_in_database(database_name)
@@ -69,7 +70,8 @@ def insert1 ():
                 verify = False
     database.save_in_database(database_name, data)
     print("Guardado en la base de datos")
-    
+
+
 def get1_all():
     print()
     data = database.get_data_in_database(database_name)
@@ -79,7 +81,8 @@ def get1_all():
         for j in keys:
             print(str(j) + ": " + str(i[j]))
             print("----------------")
-            
+
+
 def get1_client():
     bucle = True
     while bucle:
@@ -108,16 +111,18 @@ def get1_client():
         else:
             bucle = False
 
+
 def delete_client1():
     bucle = True
     while bucle:
         try:
-            client1 = str(input("Digita el número de identificación del cliente: "))
+            client1 = str(
+                input("Digita el número de identificación del cliente: "))
             database.delete_data_by_noid(database_name, "noid1", client1)
         except NameError:
             print(NameError)
-        
-    
+
+
 def show_ops():
     print()
     print("------Opciones (clientes)------")
@@ -129,13 +134,14 @@ def show_ops():
     print("5. Mostrar opciones [5]")
     print("6. Salir [6]")
     print()
-    
+
+
 def start1():
     if mode == "dev":
         database.create_database(database_name)
-        
+
     show_ops()
-    
+
     bucle = True
     while bucle:
         try:
@@ -159,5 +165,3 @@ def start1():
             print("5. Mostrar Menú [5]")
             print("La opción digitada es invalida (debe ser número en las opciones)")
             print()
-
-start1()
