@@ -117,6 +117,26 @@ def delete_data_by_property(database_name, property="uid", value=" "):
     else:
         print("No existe en la base de datos")
 
+
+def delete_data_by_uid(database_name, property="uid", value=" "):
+    data_in_database = get_data_in_database(database_name)
+    vehicle = get_by_property(database_name, property, value)
+    data_in_database.pop(vehicle["uid"])
+    write_database = get_database(database_name, "w")
+    write_database.write("")
+    for i in data_in_database:
+        save_in_database(database_name, i)
+
+
+def delete_data_by_service_code(database_name, property="SC", value=""):
+    data_in_database = get_data_in_database(database_name)
+    service = get_by_property(database_name, property, value)
+    data_in_database.pop(service["SC"])
+    write_database = get_database(database_name, "w")
+    write_database.write("")
+    for i in data_in_database:
+        save_in_database(database_name, i)
+
     # ####Examples
 
     # ##Create database

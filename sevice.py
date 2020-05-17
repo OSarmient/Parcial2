@@ -5,33 +5,34 @@ database_name = "service"
 
 props = [
     {
-        "data": "numero_servicio", 
-        "display": "Escriba el codigo que el servicio que deaea: ", 
+        "data": "numero_servicio",
+        "display": "Escriba el codigo que el servicio que deaea: ",
         "value": "",
         "type": "int"
     },
 
     {
-        "data": "nombre_servcio", 
-        "display": "Escriba el nombre de el servicio que desea: ", 
-        "value":"", 
+        "data": "nombre_servcio",
+        "display": "Escriba el nombre de el servicio que desea: ",
+        "value": "",
         "type": "str"
     },
 
     {
         "data": "precio_unitario",
-        "display": "Escriba cuanto cuaesta el servicio por hora: ", 
+        "display": "Escriba cuanto cuaesta el servicio por hora: ",
         "value": "",
         "type": "int"
     },
 
     {
-        "data": "Horas", 
+        "data": "Horas",
         "display": "Escriba por cuantas horas quire contratar el servicio: ",
         "value": "",
         "type": "int"
     }
-    ]
+]
+
 
 def validate_props(prop):
     error = False
@@ -42,12 +43,13 @@ def validate_props(prop):
     if prop["type"] == "string" and type(prop["value", str]) == prop["trype"]:
         print("El valor de " + prop["data"] + " no es valido")
         error = True
-    
+
     if "ajust" in prop and int(prop["ajust"]) < len(prop["value"]):
         print("Supero el limite de caracteres")
     return error
 
-def insert ():
+
+def insert():
     data = {}
 
     for i in props:
@@ -61,13 +63,15 @@ def insert ():
         print("Guardado en la base de datos")
         database.save_in_database(database_name, data)
 
+
 def get_all():
     data = database.get_data_in_database(database_name)
     for i in data:
-       keys = i.keys()
-       for j in keys:
-           print(str(j) + ": " + str(i[j]))
+        keys = i.keys()
+        for j in keys:
+            print(str(j) + ": " + str(i[j]))
     print()
+
 
 def get_vehicles_service():
     bucle = True
@@ -99,14 +103,17 @@ def get_vehicles_service():
         else:
             bucle = False
 
+
 def delete_service_by_code():
     bucle = True
     while bucle:
         try:
             service_code = str(input("Escriba el codigo del servicio: "))
-            database.delete_data_by_service_code(database_name, "numero_servicio", service_code)
+            database.delete_data_by_service_code(
+                database_name, "numero_servicio", service_code)
         except NameError:
             print(NameError)
+
 
 def show_menu():
     print("---Menu servicios----: ")
@@ -117,30 +124,31 @@ def show_menu():
     print("5. Mostar opciones. [5]")
     print("6. Salir [6]")
 
+
 def start():
 
     show_menu()
-    
 
     bucle = True
     while bucle:
- 
+
         try:
             option = int(input("Digita laopcion que desees ejecutar: "))
-            if option == 1: 
+            if option == 1:
                 insert()
-            elif option == 2: 
+            elif option == 2:
                 get_vehicles_service()
-            elif option == 3: 
+            elif option == 3:
                 delete_service_by_code()
             elif option == 4:
                 get_all()
-            elif option == 5: 
+            elif option == 5:
                 show_menu()
-            elif option == 6: 
+            elif option == 6:
                 bucle = False
 
         except:
             print("La excepcion digitada es invalida")
+
 
 start()
