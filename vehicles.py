@@ -177,7 +177,7 @@ def delete_vehicle_by_plate():
             print("Digite s en cualquier momento para salir.")
             vehicle_plate = str(input("Digita la placa del vehiculo: "))
 
-            if vehicle_plate.lower() == "s":
+            if vehicle_plate.lower() != "s":
                 database.delete_data_by_property(
                     database_name, "placa", vehicle_plate)
             else:
@@ -195,7 +195,6 @@ def show_menu():
     print("2. Ver todos los carros [2]")
     print("3. Buscar carros de un cliente [3]")
     print("4. Eliminar un vehiculo por su placa [4]")
-    print("5. Agregar un carro [5]")
     print("5. Mostrar menú [5]")
     print("6. Salir [6]")
     print()
