@@ -21,11 +21,11 @@ def relation():
             client4 = database.get_multi_database_data(
                 database_name, "noid1", client1)
             if type(client4) == list and len(client4) > 0:
-                serv(database_name3)
+                insert_list(client4, data)
+                serv(database_name3, data)
                 get_vehicles1(database_name2, client1)
                 plate1 = input("Digite la placa del vehiculo que desea realizar el servicio: ")
                 placa(database_name2, client1, plate1, data)
-                
                 bucle = False
             else:
                 print()
@@ -33,6 +33,7 @@ def relation():
                 print()
         else:
             bucle = False
+    database.save_in_database2(database_name4, data)
             
 def get_vehicles1(database_name, customer_id):
     bucle = True
@@ -81,10 +82,12 @@ def placa(database_name, customer_id, plate, data):
             print()
             plate = input("Digite la placa del vehiculo que desea realizar el servicio: ")
     del vehicle_list["cliente"]
-    insert_list(vehicle_list, data)
-    print(data)
+    ve_li=[]
+    ve_li.append(vehicle_list)
+    insert_list(ve_li, data)
+    data.pop()
     
-def serv(database_name):
+def serv(database_name, data):
     get_all(database_name)
     bucle = True
     while bucle:
@@ -98,7 +101,9 @@ def serv(database_name):
             print()
             print("No existe un servicio asociado a este codigo. ")
             print()
-        
+    insert_list(vehicles_service, data)
+    data.pop()
+    
 def insert_list(lista, data):
     for i in lista:
         keys = i.keys()
@@ -115,5 +120,4 @@ def get_all(database_name):
     print()
             
 relation()
-
     
