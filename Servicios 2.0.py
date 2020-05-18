@@ -18,7 +18,7 @@ def relation():
             input("Digite el numero de identificación del cliente: "))
 
         if client1.lower() != "s":
-            client4 = database.get_multi_database_data(
+            client4 = database.get_multi_database_data2(
                 database_name, "noid1", client1)
             if type(client4) == list and len(client4) > 0:
                 insert_list(client4, data)
@@ -42,7 +42,7 @@ def get_vehicles1(database_name, customer_id):
     while bucle:
 
         if customer_id.lower() != "s":
-            customer_vehicles = database.get_multi_database_data(
+            customer_vehicles = database.get_multi_database_data2(
                 database_name, "cliente", customer_id.ljust(12))
             if type(customer_vehicles) == list and len(customer_vehicles) > 0:
                 print()
@@ -66,7 +66,7 @@ def get_vehicles1(database_name, customer_id):
 def placa(database_name, customer_id, plate, data):
     bucle = True
     while bucle:
-        customer_vehicles = database.get_multi_database_data(
+        customer_vehicles = database.get_multi_database_data2(
         database_name, "cliente", customer_id.ljust(12))
         customer_plate = "s"
         for i in range(len(customer_vehicles)): 
@@ -91,7 +91,7 @@ def serv(database_name, data):
     bucle = True
     while bucle:
         service1 = input("Digite el codigo del servicio que desea: ")
-        vehicles_service = database.get_multi_database_data(
+        vehicles_service = database.get_multi_database_data2(
                 database_name, "numero_servicio", service1)
         if type(vehicles_service) == list and len(vehicles_service) > 0:
             print()
