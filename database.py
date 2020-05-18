@@ -49,6 +49,7 @@ def save_in_database(database_name, data):
     database.write(str(data) + "\n")
     return True
 
+
 def save_in_database2(database_name, data):
     database = get_database(database_name, "a")
     if get_database(database_name, "a") == False:
@@ -58,6 +59,7 @@ def save_in_database2(database_name, data):
     database = get_database(database_name, "a")
     database.write(str(data) + "\n")
     return True
+
 
 def count_database(database_name):
     database = get_database(database_name, "r")
@@ -113,6 +115,7 @@ def get_multi_database_data(database_name, property="uid", value=""):
         return False
     return False
 
+
 def get_multi_database_data2(database_name, property="uid", value=""):
     database = get_database(database_name, "r")
     return_data = []
@@ -127,6 +130,7 @@ def get_multi_database_data2(database_name, property="uid", value=""):
             print("la base de datos no existe")
         return False
     return False
+
 
 def delete_data_by_property(database_name, property="uid", value=" "):
     data_in_database = get_data_in_database(database_name)
@@ -152,7 +156,6 @@ def delete_data_by_uid(database_name, property="uid", value=" "):
             save_in_database(database_name, i)
     else:
         print("No existe en la base de datos.")
-
 
     # ####Examples
 

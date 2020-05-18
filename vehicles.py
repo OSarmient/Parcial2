@@ -90,6 +90,10 @@ props = [
 
 def validate_prop(prop):
     error = False
+
+    # validación de propiedades
+    # se valida en tipo de propiedad (int, string) y si su valor es valido
+
     if prop["type"] == "int" and type(prop["value"]) == prop["type"]:
         print("El valor de " + prop["data"] + " es invalido")
         error = True
@@ -107,34 +111,68 @@ def validate_prop(prop):
 
 def insert():
     data = {}
-    verify = False
-    noid2 = database.get_data_in_database(database_name)
     for i in props:
         bucle = True
         while bucle:
             i["value"] = input(i["display"] + ": ")
-            for a in range(len(noid2)):
-                if noid2[a]["placa"] == i["value"]:
-                    verify = True
-            if validate_prop(i) == False and verify == False:
-                data[i["data"]] = i["value"]
-                bucle = False
-            else:
-                print(
-                    "Ya existe un cliente asociado a este número de identificación")
-                verify = False
+
+            # Validación de propiedades
+            if validate_prop(i) == False:
+                if i["data"] == "placa":
+                    # Cuando la propiedad sea la placa validar si existe otra igual en la base de datos
+                    if database.get_by_property(database_name, "placa", i["value"]) == False:
+                        data[i["data"]] = i["value"].ljust(int(i["ajust"]))
+                        bucle = False
+                    else:
+                        print()
+                        print("Ya existe un vehiculo con esta placa.")
+                        print()
+                else:
+                    data[i["data"]] = i["value"].ljust(int(i["ajust"]))
+                    bucle = False
+
     database.save_in_database(database_name, data)
     print("Guardado en la base de datos")
 
 
 def get_all():
     data = database.get_data_in_database(database_name)
-    for i in data:
-        keys = i.keys()
-        print("----------------")
-        for j in keys:
-            print(str(j) + ": " + str(i[j]))
-        print("----------------")
+    if len(data) > 0:
+        for i in data:
+            if i != False:
+                keys = i.keys()
+                print("----------------")
+                for j in keys:
+                    print(str(j) + ": " + str(i[j]))
+                print("----------------")
+
+
+def get_one():
+    bucle = True
+    while bucle:
+        try:
+            print("Digite s en cualquier momento para salir.")
+            vehicle_plate = str(input("Digita la placa del vehiculo: "))
+
+            if vehicle_plate.lower() != "s":
+                vehicle = database.get_by_property(
+                    database_name, "placa", vehicle_plate)
+
+                if vehicle != False:
+                    keys = vehicle.keys()
+                    print("----------------")
+                    for j in keys:
+                        print(str(j) + ": " + str(vehicle[j]))
+                    print("----------------")
+                else:
+                    print()
+                    print("No existe ningun vehiculo asociado a esta placa. ")
+                    print()
+            else:
+                bucle = False
+
+        except NameError:
+            print("No due posible eliminar el vehiculo.")
 
 
 def get_customer_vehicles():
@@ -193,8 +231,9 @@ def show_menu():
     print("2. Ver todos los carros [2]")
     print("3. Buscar carros de un cliente [3]")
     print("4. Eliminar un vehiculo por su placa [4]")
-    print("5. Mostrar menú [5]")
-    print("6. Salir [6]")
+    print("5. Buscar un vehiculo por su placa [5]")
+    print("6. Mostrar menú [6]")
+    print("7. Salir [7]")
     print()
 
 
@@ -206,7 +245,7 @@ def start():
     bucle = True
     while bucle:
         try:
-            print("5. Mostrar menú [5]")
+            print("6. Mostrar menú [6]")
             option = int(input("Digita la opción que desees ejecutar: "))
             print()
             if option == 1:
@@ -218,15 +257,18 @@ def start():
             elif option == 4:
                 delete_vehicle_by_plate()
             elif option == 5:
-                show_menu()
+                get_one()
             elif option == 6:
-                print("6. Mostrar menu. [6]")
+                show_menu()
+            elif option == 7:
                 bucle = False
             print()
 
         except NameError:
             print(NameError)
-            print("5. Mostrar menú [5]")
+            print("6. Mostrar menú [6]")
             print("La opción digitada es invalida (debe ser un número en el menú).")
             print()
 
+
+start()

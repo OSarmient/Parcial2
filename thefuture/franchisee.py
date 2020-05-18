@@ -1,0 +1,2 @@
+class Franchisee:
+    mode = "dev"
