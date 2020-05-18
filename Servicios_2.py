@@ -1,5 +1,5 @@
 import database
-
+import Facturas
 #servicios 2
 
 database_name = "clients"
@@ -29,6 +29,7 @@ def relation():
                 ciclo(database_name3,data)
                 print("Transacción confirmada")
                 database.save_in_database2(database_name4, data)
+                Facturas.get_bills(client1)
                 bucle = False
             else:
                 print()
