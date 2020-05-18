@@ -22,11 +22,12 @@ def relation():
                 database_name, "noid1", client1)
             if type(client4) == list and len(client4) > 0:
                 insert_list(client4, data)
-                serv(database_name3, data)
-                ciclo(database_name3,data)
                 get_vehicles1(database_name2, client1)
                 plate1 = input("Digite la placa del vehiculo que desea realizar el servicio: ")
                 placa(database_name2, client1, plate1, data)
+                serv(database_name3, data)
+                ciclo(database_name3,data)
+                print("Transacción confirmada")
                 bucle = False
             else:
                 print()
@@ -72,8 +73,6 @@ def placa(database_name, customer_id, plate, data):
             customer_plate = customer_vehicles[i]["placa"]
             vehicle_list = customer_vehicles[i]
             if plate == customer_plate:
-                print()
-                print("Transacción confirmada")
                 print()
                 bucle = False
                 break
