@@ -47,7 +47,7 @@ def hola():
         break
     if len(a) == 0:
         print("No existe una factura asociada a este cliente")
-hola()
+
 #def fin_servicio(archivo):
 #    data = {}
 #    v
