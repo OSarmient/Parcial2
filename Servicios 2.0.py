@@ -5,7 +5,7 @@ import database
 database_name = "clients"
 database_name2 = "vehicles"
 database_name3 = "service"
-database_name4 = "Facturas"
+database_name4 = "service_asked"
 
 
 def relation():
@@ -23,6 +23,7 @@ def relation():
             if type(client4) == list and len(client4) > 0:
                 insert_list(client4, data)
                 serv(database_name3, data)
+                ciclo(database_name3,data)
                 get_vehicles1(database_name2, client1)
                 plate1 = input("Digite la placa del vehiculo que desea realizar el servicio: ")
                 placa(database_name2, client1, plate1, data)
@@ -101,7 +102,19 @@ def serv(database_name, data):
             print("No existe un servicio asociado a este codigo. ")
             print()
     insert_list(vehicles_service, data)
-    
+
+def ciclo(database_name, data):
+    loop = True
+    while loop:
+        ask = input("Desea agregar otro servicio, Si o No? ")
+        if ask.lower() == "si":
+            serv(database_name, data)
+        elif ask.lower() == "no":
+            loop = False
+        else:
+            print("Debe responder Si o No")
+            ask = input("Desea agregar otro servicio, Si o No? ")
+
 def insert_list(lista, data):
     for i in lista:
         keys = i.keys()
@@ -119,5 +132,3 @@ def get_all(database_name):
     print()
             
 relation()
-
-    
