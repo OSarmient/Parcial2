@@ -1,8 +1,3 @@
-import database
-
-database_name4 = "service_asked"
-database_name5 = "Facturas"
-
 def hola():
     price = 0                                               #Precio es 0
     BD = 0
@@ -18,7 +13,7 @@ def hola():
                 price=("Valor Total = " + str(price))
                 i.append(price)
                 BD = database.count_database(database_name5)
-                i.insert(0,BD)
+                i.insert(0, ("Factura No. " + str(BD)))
                 print(i)
                 database.save_in_database2(database_name5, i)
                 price = 0
