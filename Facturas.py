@@ -35,19 +35,18 @@ def hola():
     iden = input("Digite su número de identificación: ")
     bill1 = database.get_data_in_database(database_name5)
     loop = True
-    for i in bill1:
-        while loop:
+    a = []
+    while loop:
+        for i in bill1:
             for j in i:
                  if j == ("noid1: " + iden):
+                    a = i
                     print(i)
                     loop = False
                     break
-                 else:
-                    loop = True
-            break
         break
-    if loop == True:
-        print("No exite una factura asociada a este cliente")
+    if len(a) == 0:
+        print("No existe una factura asociada a este cliente")
 
 #def fin_servicio(archivo):
 #    data = {}
