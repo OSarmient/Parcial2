@@ -1,5 +1,3 @@
-# Principal loop
-
 import vehicles
 import clients
 import service
@@ -25,14 +23,19 @@ while bucle:
         print()
         if option == 1:
             clients.start1()
+            show_menu()
         elif option == 2:
             vehicles.start()
+            show_menu()
         elif option == 3:
             service.startS()
+            show_menu()
         elif option == 4:
             Facturas.get_allF()
+            show_menu()
         elif option == 5:
             Facturas.hola()
+            show_menu()
         elif option == 6:
             show_menu()
         elif option == 7:
