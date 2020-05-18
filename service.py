@@ -5,13 +5,13 @@ mode = "dev"
 database_name = "service"
 
 props = [
-    {
-        "data": "placa",
-        "display": "Digite la placa del veiculo." ,
-        "value": "",
-        "type": "string",
-        "ajust": "6"
-    },
+#    {
+#        "data": "placa",
+#        "display": "Digite la placa del veiculo." ,
+#        "value": "",
+#        "type": "string",
+#        "ajust": "6"
+#    },
     {
         "data": "numero_servicio",
         "display": "Escriba el codigo que el servicio que deaea: ",
@@ -74,7 +74,7 @@ def insertS():
                 bucle = False
             else:
                 print(
-                    "Ya existe un cliente asociado a este número de identificación")
+                    "Ya existe un servicio con ese codigo")
                 verify = False
     database.save_in_database(database_name, data)
     print("Guardado en la base de datos")
@@ -98,11 +98,11 @@ def get_vehicles_service():
 
         print("Digite s en cualquier momento para salir.")
         vehicle_plate = str(
-            input("Digite la placa del carro: "))
+            input("Digite el codigo del servicio: "))
 
         if vehicle_plate.lower() != "s":
             vehicle_service = database.get_multi_database_data(
-                database_name, "placa", vehicle_plate)
+                database_name, "numero_servicio", vehicle_plate)
 
             if type(vehicle_service) == list and len(vehicle_service) > 0:
                 print()
@@ -115,7 +115,7 @@ def get_vehicles_service():
                 print()
             else:
                 print()
-                print("No existe un cliente asociado a este numero de identificación.")
+                print("No existe este servicio.")
                 print()
         else:
             bucle = False
