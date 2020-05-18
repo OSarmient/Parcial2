@@ -10,8 +10,9 @@ def show_menu():
     print("2. Vehiculos. [2]")
     print("3. Servicios. [3]")
     print("4. Mostar Facturas[4]")
-    print("5. Mostar opciones. [5]")
-    print("6. Salir [6]")
+    print("5. Buscar Factura [5]")
+    print("6. Mostar menu. [6]")
+    print("7. Salir [7]")
 
 
 bucle = True
@@ -29,12 +30,15 @@ while bucle:
         elif option == 4:
             Facturas.get_allF()
         elif option == 5:
-            show_menu()
+            Facturas.hola()
         elif option == 6:
+            show_menu()
+        elif option == 7:
             bucle = False
+
         print()
     except NameError:
         print(NameError)
-        print("5. Mostrar menú de modulos [5]")
+        print("7. Mostrar menú de modulos [7]")
         print("La opción digitada es invalida (debe ser un número en el menú).")
         print()

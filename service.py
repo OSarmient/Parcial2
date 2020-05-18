@@ -1,17 +1,13 @@
 import database
-import invoices
+import Servicios_2
 
 mode = "dev"
 database_name = "service"
+database_nameC = "clients"
+database_nameV = "vehicles"
+database_nameA = "service_saked"
 
 props = [
-    {
-        "data": "placa",
-        "display": "Digite la placa del veiculo." ,
-        "value": "",
-        "type": "string",
-        "ajust": "6"
-    },
     {
         "data": "numero_servicio",
         "display": "Escriba el codigo que el servicio que deaea: ",
@@ -74,7 +70,7 @@ def insertS():
                 bucle = False
             else:
                 print(
-                    "Ya existe un cliente asociado a este número de identificación")
+                    "Ya existe un servicio con ese codigo")
                 verify = False
     database.save_in_database(database_name, data)
     print("Guardado en la base de datos")
@@ -98,11 +94,11 @@ def get_vehicles_service():
 
         print("Digite s en cualquier momento para salir.")
         vehicle_plate = str(
-            input("Digite la placa del carro: "))
+            input("Digite el codigo del servicio: "))
 
         if vehicle_plate.lower() != "s":
             vehicle_service = database.get_multi_database_data(
-                database_name, "placa", vehicle_plate)
+                database_name, "numero_servicio", vehicle_plate)
 
             if type(vehicle_service) == list and len(vehicle_service) > 0:
                 print()
@@ -115,7 +111,7 @@ def get_vehicles_service():
                 print()
             else:
                 print()
-                print("No existe un cliente asociado a este numero de identificación.")
+                print("No existe este servicio.")
                 print()
         else:
             bucle = False
@@ -141,12 +137,13 @@ def show_menu():
     print()
     print("---Menu servicios----: ")
     print()
-    print("1. Pedir un servicio. [1]")
+    print("1. Nuevo servicio. [1]")
     print("2. Buscar servicio. [2]")
     print("3. Eliminar servicio. [3]")
     print("4. Mostrar todos los servicios. [4]")
-    print("5. Finalizar servicio [5]")
-    print("6. Salir. [6]")
+    print("5. Pedir servicio [5]")
+    print("6. Mostrar menu [6]")
+    print("7. Salir. [7]")
     print()
 
 
@@ -160,7 +157,7 @@ def startS():
     while bucle:
 
         try:
-            print("5, Mostrar menu [5]")
+            print("6. Mostrar menu [6]")
             option = int(input("Digita la opcion que desees ejecutar: "))
             print()
             if option == 1:
@@ -172,9 +169,13 @@ def startS():
             elif option == 4:
                 get1_all()
             elif option == 5:
-                show_menu()
+                Servicios_2.relation()
             elif option == 6:
+                show_menu()
+            elif option == 7:
+                print("6. Mostrar menu. [6]")
                 bucle = False
+                
 
         except NameError:
             print(NameError)

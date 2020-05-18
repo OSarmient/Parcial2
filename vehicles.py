@@ -220,6 +220,7 @@ def start():
             elif option == 5:
                 show_menu()
             elif option == 6:
+                print("6. Mostrar menu. [6]")
                 bucle = False
             print()
 

@@ -163,6 +163,7 @@ def start1():
             elif option == 5:
                 show_ops()
             elif option == 6:
+                print("6. Mostrar menu. [6]")
                 bucle = False
         except NameError:
             print(NameError)
