@@ -124,37 +124,22 @@ def delete_data_by_property(database_name, property="uid", value=" "):
         for i in data_in_database:
             save_in_database(database_name, i)
     else:
-        print("No existe en la base de datos")
+        print("No existe en la base de datos.")
 
 
 def delete_data_by_uid(database_name, property="uid", value=" "):
     data_in_database = get_data_in_database(database_name)
     vehicle = get_by_property(database_name, property, value)
-    data_in_database.pop(vehicle["uid"])
-    write_database = get_database(database_name, "w")
-    write_database.write("")
-    for i in data_in_database:
-        save_in_database(database_name, i)
+    if vehicle != False:
+        data_in_database.pop(vehicle["uid"])
+        write_database = get_database(database_name, "w")
+        write_database.write("")
+        for i in data_in_database:
+            save_in_database(database_name, i)
+    else:
+        print("No existe en la base de datos.")
 
 
-def delete_data_by_service_code(database_name, property="SC", value=""):
-    data_in_database = get_data_in_database(database_name)
-    service = get_by_property(database_name, property, value)
-    data_in_database.pop(service["SC"])
-    write_database = get_database(database_name, "w")
-    write_database.write("")
-    for i in data_in_database:
-        save_in_database(database_name, i)
-        
-def delete_data_by_noid(database_name, property="uid", value=" "):
-    data_in_database = get_data_in_database(database_name)
-    client3 = get_by_property(database_name, property, value)
-    data_in_database.pop(client3["uid"])
-    write_database = get_database(database_name, "w")
-    write_database.write("")
-    for i in data_in_database:
-        save_in_database(database_name, i)
-        
     # ####Examples
 
     # ##Create database
@@ -173,3 +158,4 @@ def delete_data_by_noid(database_name, property="uid", value=" "):
     # print(get_by_property("customers", "name", "Luz"))
     # print(get_by_property("customers", "id", "1251"))
     # print(get_by_property("customers", "uid", 2))
+

@@ -8,6 +8,7 @@ def show_menu():
     print("1. Clientes. [1]")
     print("2. Vehiculos. [2]")
     print("3. Servicios. [3]")
+    print("4. Mostar Facturas[4]")
     print("5. Mostar opciones. [5]")
     print("6. Salir [6]")
 
@@ -24,7 +25,9 @@ while bucle:
         elif option == 2:
             vehicles.start()
         elif option == 3:
-            service.start()
+            service.startS()
+        elif option == 4:
+            invoices.get_all()
         elif option == 5:
             show_menu()
         elif option == 6:

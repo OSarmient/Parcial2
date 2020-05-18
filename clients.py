@@ -116,9 +116,13 @@ def delete_client1():
     bucle = True
     while bucle:
         try:
-            client1 = str(
-                input("Digita el número de identificación del cliente: "))
-            database.delete_data_by_noid(database_name, "noid1", client1)
+            print("Digite s en cualquier momento para salir.")
+            client1 = str(input("Digita el número de identificación del cliente: "))
+            
+            if client1.lower() != "s": 
+                database.delete_data_by_uid(database_name, "noid1", client1)
+            else:
+                bucle = False
         except NameError:
             print(NameError)
 
@@ -165,3 +169,4 @@ def start1():
             print("5. Mostrar Menú [5]")
             print("La opción digitada es invalida (debe ser número en las opciones)")
             print()
+
