@@ -28,6 +28,7 @@ def relation():
                 serv(database_name3, data)
                 ciclo(database_name3,data)
                 print("Transacción confirmada")
+                database.save_in_database2(database_name4, data)
                 bucle = False
             else:
                 print()
@@ -35,7 +36,6 @@ def relation():
                 print()
         else:
             bucle = False
-    database.save_in_database2(database_name4, data)
             
 def get_vehicles1(database_name, customer_id):
     bucle = True
