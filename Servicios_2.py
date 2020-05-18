@@ -129,5 +129,4 @@ def get_all(database_name):
         for j in keys:
             print(str(j) + ": " + str(i[j]))
     print()
-            
-relation()
+
