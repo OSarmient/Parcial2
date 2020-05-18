@@ -1,11 +1,20 @@
 import os
 import ast
 
+# Dependencied OS https://docs.python.org/3/library/os.html
+
+# Dependencies AST https://docs.python.org/3/library/ast.html
+# Use: ast.literal_eval(string)
+# Solo se uso la función literal_eval() para pasar de un string en modo dict a una clase dict de python
+
 mode = "dev"
 databases_path = "databases/"
 
 
 def create_database(database_name):
+    # param database_name (String)
+    # return (Bool) si el archivo existe devuelve false : true
+
     isFile = os.path.isfile(databases_path + database_name + ".txt")
     if os.path.isdir(databases_path) == False:
         os.mkdir("databases")
@@ -29,6 +38,9 @@ def get_database(database_name, mode="r"):
 
 
 def get_data_in_database(database_name):
+    # param database_name (String)
+    # return (Array) Información formateada en la base de datos
+
     database = get_database(database_name, "r")
     separated = []
     database_data = database.read().split("\n")
@@ -39,6 +51,10 @@ def get_data_in_database(database_name):
 
 
 def save_in_database(database_name, data):
+    # Agregar elemento en la base de datos
+    # param database_name (String)
+    # return (Array) info in database
+
     database = get_database(database_name, "a")
     if get_database(database_name, "a") == False:
         create_database(database_name)
@@ -46,22 +62,40 @@ def save_in_database(database_name, data):
             print("Se creo la base de datos")
     database = get_database(database_name, "a")
     data["uid"] = count_database(database_name)
-    database.write(str(data) + "\n")
-    return True
+
+    try:
+        database.write(str(data) + "\n")
+        return True
+    except NameError:
+        print(NameError)
+        return False
 
 
 def save_in_database2(database_name, data):
+    # Agregar elemento en la base de datos
+    # param database_name (String)
+    # return (Boolean) agregar informacion
+
     database = get_database(database_name, "a")
     if get_database(database_name, "a") == False:
         create_database(database_name)
         if mode == "dev":
             print("Se creo la base de datos")
     database = get_database(database_name, "a")
-    database.write(str(data) + "\n")
-    return True
+
+    try:
+        database.write(str(data) + "\n")
+        return True
+    except NameError:
+        print(NameError)
+        return False
 
 
 def count_database(database_name):
+    # Contar información en la base de datos
+    # param database_name (String)
+    # return (Int) and (Boolean)
+
     database = get_database(database_name, "r")
     if database != False:
         all_data = database.read().split("\n")
@@ -73,6 +107,12 @@ def count_database(database_name):
 
 
 def get_by_uid(database_name, uid):
+
+    # Obtener información basado en su uid
+    # param database_name (String)
+    # param uid (Int)
+    # return (Boolean) or (Dict)
+
     database = get_database(database_name, "r")
     if database != False:
         all_data = database.read().split("\n")
@@ -87,6 +127,13 @@ def get_by_uid(database_name, uid):
 
 
 def get_by_property(database_name, property="uid", value=""):
+
+    # Obtener informaciónde una fila basado en el valor de una propiedad
+    # param database_name (String)
+    # param property (String)
+    # param value (String)
+    # return (Boolean) or (Dict)
+
     database = get_database(database_name, "r")
     if database != False:
         all_data = database.read().split("\n")
@@ -101,6 +148,13 @@ def get_by_property(database_name, property="uid", value=""):
 
 
 def get_multi_database_data(database_name, property="uid", value=""):
+
+    # Obtener información de todas las filas basado en el valor de una propiedad
+    # param database_name (String)
+    # param property (String)
+    # param value (String) or (Int)
+    # return (Boolean) or (List)
+
     database = get_database(database_name, "r")
     return_data = []
     if database != False:
@@ -117,6 +171,13 @@ def get_multi_database_data(database_name, property="uid", value=""):
 
 
 def get_multi_database_data2(database_name, property="uid", value=""):
+
+    # Obtener información de todas las filas basado en el valor de una propiedad
+    # param database_name (String)
+    # param property (String)
+    # param value (String) or (Int)
+    # return (Boolean) or (List)
+
     database = get_database(database_name, "r")
     return_data = []
     if database != False:
@@ -133,6 +194,12 @@ def get_multi_database_data2(database_name, property="uid", value=""):
 
 
 def delete_data_by_property(database_name, property="uid", value=" "):
+
+    # Borrar fila en la base de datos basado en sus propiedades
+    # param database_name (String)
+    # param property (String)
+    # param value (String) or (Int)
+
     data_in_database = get_data_in_database(database_name)
     row = get_by_property(database_name, property, value)
     if row != False:
@@ -146,6 +213,12 @@ def delete_data_by_property(database_name, property="uid", value=" "):
 
 
 def delete_data_by_uid(database_name, property="uid", value=" "):
+
+    # Borrar fila en la base de datos basado en sus propiedades
+    # param database_name (String)
+    # param property (String)
+    # param value (String) or (Int)
+
     data_in_database = get_data_in_database(database_name)
     vehicle = get_by_property(database_name, property, value)
     if vehicle != False:
