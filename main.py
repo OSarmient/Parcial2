@@ -1,6 +1,7 @@
 import vehicles
 import clients
 import service
+import Facturas
 
 
 def show_menu():
@@ -17,7 +18,6 @@ bucle = True
 show_menu()
 while bucle:
     try:
-        print("5. Mostrar menú de modulos [5]")
         option = int(input("Digita la opción que desees ejecutar: "))
         print()
         if option == 1:
@@ -27,7 +27,7 @@ while bucle:
         elif option == 3:
             service.startS()
         elif option == 4:
-            invoices.get_all()
+            Facturas.get_allF()
         elif option == 5:
             show_menu()
         elif option == 6:
