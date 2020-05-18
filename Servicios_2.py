@@ -43,7 +43,7 @@ def get_vehicles1(database_name, customer_id):
 
         if customer_id.lower() != "s":
             customer_vehicles = database.get_multi_database_data2(
-                database_name, "cliente", customer_id.ljust(12))
+                database_name, "cliente", customer_id)
             if type(customer_vehicles) == list and len(customer_vehicles) > 0:
                 print()
                 print("Existen " + str(len(customer_vehicles)) +
@@ -67,7 +67,7 @@ def placa(database_name, customer_id, plate, data):
     bucle = True
     while bucle:
         customer_vehicles = database.get_multi_database_data2(
-        database_name, "cliente", customer_id.ljust(12))
+        database_name, "cliente", customer_id)
         customer_plate = "s"
         for i in range(len(customer_vehicles)): 
             customer_plate = customer_vehicles[i]["placa"]
