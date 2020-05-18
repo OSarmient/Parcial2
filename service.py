@@ -142,7 +142,8 @@ def show_menu():
     print("3. Eliminar servicio. [3]")
     print("4. Mostrar todos los servicios. [4]")
     print("5. Pedir servicio [5]")
-    print("6. Salir. [6]")
+    print("6. Mostrar menu [6]")
+    print("7. Salir. [7]")
     print()
 
 
@@ -156,7 +157,7 @@ def startS():
     while bucle:
 
         try:
-            print("5, Mostrar menu [5]")
+            print("6. Mostrar menu [6]")
             option = int(input("Digita la opcion que desees ejecutar: "))
             print()
             if option == 1:
@@ -170,7 +171,11 @@ def startS():
             elif option == 5:
                 Servicios_2.relation()
             elif option == 6:
+                show_menu()
+            elif option == 7:
+                print("6. Mostrar menu. [6]")
                 bucle = False
+                
 
         except NameError:
             print(NameError)
