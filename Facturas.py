@@ -11,18 +11,15 @@ def hola():
         for j in i:                                         #Pasa por los items de los elementos del archivo
             if j == ("noid1: " + iden):                     #Si el item es igual que el ID
                 for x in i:                                 #Recorre lositems de los elementos del archivo
-                     a = x[0:6]                              #
-                     if a == ("precio"):
+                    a = x[0:6]                              #
+                    if a == ("precio"):
                         price += (int(x[8:len(x)]))
                 price=("Valor Total = " + str(price))
                 i.append(price)
                 print(i)
                 database.save_in_database2(database_name5, i)
                 price = 0
-                break
-            else:
-                print("No hay facturas registradas para este cliente")
-                break
+                
 def get_allF():
     print()
     data = database.get_data_in_database(database_name5)
@@ -31,7 +28,7 @@ def get_allF():
         print("-----------------")
         for j in keys:
             print(str(j) + ": " + str(i[j]))
-            print("-------------------")
+            print("-------------------") 
 
 #def fin_servicio(archivo):
 #    data = {}

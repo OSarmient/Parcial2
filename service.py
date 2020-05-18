@@ -1,17 +1,13 @@
 import database
-import invoices
+import Servicios_2
 
 mode = "dev"
 database_name = "service"
+database_nameC = "clients"
+database_nameV = "vehicles"
+database_nameA = "service_saked"
 
 props = [
-#    {
-#        "data": "placa",
-#        "display": "Digite la placa del veiculo." ,
-#        "value": "",
-#        "type": "string",
-#        "ajust": "6"
-#    },
     {
         "data": "numero_servicio",
         "display": "Escriba el codigo que el servicio que deaea: ",
@@ -141,11 +137,11 @@ def show_menu():
     print()
     print("---Menu servicios----: ")
     print()
-    print("1. Pedir un servicio. [1]")
+    print("1. Nuevo servicio. [1]")
     print("2. Buscar servicio. [2]")
     print("3. Eliminar servicio. [3]")
     print("4. Mostrar todos los servicios. [4]")
-    print("5. Finalizar servicio [5]")
+    print("5. Pedir servicio [5]")
     print("6. Salir. [6]")
     print()
 
@@ -172,7 +168,7 @@ def startS():
             elif option == 4:
                 get1_all()
             elif option == 5:
-                show_menu()
+                Servicios_2.relation()
             elif option == 6:
                 bucle = False
 
