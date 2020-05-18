@@ -31,11 +31,9 @@ def get_allF():
     print()
     data = database.get_data_in_database(database_name5)
     for i in data:
-        keys = i.keys()
         print("-----------------")
-        for j in keys:
-            print(str(j) + ": " + str(i[j]))
-            print("-------------------") 
+        print (i)
+        print("-----------------")
 
 #def fin_servicio(archivo):
 #    data = {}
