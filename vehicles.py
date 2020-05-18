@@ -114,19 +114,17 @@ def insert():
         while bucle:
             i["value"] = input(i["display"] + ": ")
             for a in range(len(noid2)):
-                if noid2[a]["placa"].strip() == i["value"]:
+                if noid2[a]["placa"] == i["value"]:
                     verify = True
-                    print("Esta placa ya esta registrada")
             if validate_prop(i) == False and verify == False:
-                if "ajust" in i:
-                    data[i["data"]] = i["value"].ljust(int(i["ajust"]))
-                else:
-                    data[i["data"]] = i["value"]
+                data[i["data"]] = i["value"]
                 bucle = False
-            verify = True
-
+            else:
+                print(
+                    "Ya existe un cliente asociado a este número de identificación")
+                verify = False
     database.save_in_database(database_name, data)
-    print("Guardado en la base de datos.")
+    print("Guardado en la base de datos")
 
 
 def get_all():
@@ -224,8 +222,10 @@ def start():
             elif option == 6:
                 bucle = False
             print()
+
         except NameError:
             print(NameError)
             print("5. Mostrar menú [5]")
             print("La opción digitada es invalida (debe ser un número en el menú).")
             print()
+
