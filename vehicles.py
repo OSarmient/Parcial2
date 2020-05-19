@@ -121,14 +121,14 @@ def insert():
                 if i["data"] == "placa":
                     # Cuando la propiedad sea la placa validar si existe otra igual en la base de datos
                     if database.get_by_property(database_name, "placa", i["value"]) == False:
-                        data[i["data"]] = i["value"].ljust(int(i["ajust"]))
+                        data[i["data"]] = i["value"]
                         bucle = False
                     else:
                         print()
                         print("Ya existe un vehiculo con esta placa.")
                         print()
                 else:
-                    data[i["data"]] = i["value"].ljust(int(i["ajust"]))
+                    data[i["data"]] = i["value"]
                     bucle = False
 
     database.save_in_database(database_name, data)
