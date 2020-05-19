@@ -1,8 +1,0 @@
-{'noid1': '20', 'name1': 'javier', 'lastname1': 'molina', 'address1': 'calle 21', 'phone1': '231025', 'city1': 'valledupar', 'uid': 0}
-{'noid1': '1001938663', 'name1': 'fabian', 'lastname1': 'marquez', 'address1': 'calle 13', 'phone1': '3023972305', 'city1': 'valledupar', 'uid': 1}
-{'noid1': '45', 'name1': 'jose', 'lastname1': 'aldair', 'address1': 'calle 90', 'phone1': '305135', 'city1': 'chiquinquira', 'uid': 2}
-{'noid1': '123', 'name1': 'roberto', 'lastname1': 'rojas', 'address1': 'calle 1', 'phone1': '064894', 'city1': 'bogota', 'uid': 7}
-{'noid1': '223', 'name1': 'jorge', 'lastname1': 'linares', 'address1': 'calle 2', 'phone1': '54973', 'city1': 'bogota', 'uid': 8}
-{'noid1': '323', 'name1': 'alberto', 'lastname1': 'rodriguez', 'address1': 'calle 3', 'phone1': '135u3', 'city1': 'bogota', 'uid': 9}
-{'noid1': '523', 'name1': 'estabn', 'lastname1': 'medina', 'address1': 'calle 4', 'phone1': '3246346', 'city1': 'bogota', 'uid': 10}
-{'noid1': '1019153159', 'name1': 'Sebastian', 'lastname1': 'Torres', 'address1': 'Cl 165 #15', 'phone1': '3124148698', 'city1': 'Bogota', 'uid': 7}
