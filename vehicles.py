@@ -293,5 +293,3 @@ def start():
             print("6. Mostrar menú [6]")
             print("La opción digitada es invalida (debe ser un número en el menú).")
             print()
-
-start()
