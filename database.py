@@ -245,7 +245,6 @@ def get_data_in_database_order_by(database_name, property="uid"):
 
         for i in range(len(all_data) - 1):
             big_data.append(ast.literal_eval(all_data[i]))
-        sorted_array = sorted(big_data, key = lambda i: i[property])
         return sorted(big_data, key = lambda i: i[property])
 
     else:
