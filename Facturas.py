@@ -1,30 +1,22 @@
 import database
+import utils
 
 database_name4 = "service_asked"
 database_name5 = "Facturas"
 
-def get_bills(iden):
-    price = 0                                               #Precio es 0
-    BD = 0
-    bill = database.get_data_in_database(database_name4)    #llama un archivo
-    for i in bill:                                          #Pasa por cada uno de los elementos del archivo
-        for j in i:                                         #Pasa por los items de los elementos del archivo
-            if j == ("noid1: " + iden):                     #Si el item es igual que el ID
-                for x in i:                                 #Recorre lositems de los elementos del archivo
-                     a = x[0:6]                              #
-                     if a == ("precio"):
-                        price += (int(x[8:len(x)]))
-                price=("Valor Total = " + str(price))
-                i.append(price)
-                BD = database.count_database(database_name5)
-                i.insert(0, ("Factura No. " + str(BD)))
-                database.save_in_database2(database_name5, i)
-                price = 0
-                break
-        break
+def get_bills(client):
+    BD = database.count_database(database_name5)
+    if BD == False:
+        dic = {"No. Factura" : 0}
+    else:
+        dic = {"No. Factura" : BD}
+    dic.update(client[0])
+    database.save_in_database2(database_name5, dic)
     
 def get_allF():
-    print()
+    
+    utils.clean_console()
+    
     data = database.get_data_in_database(database_name5)
     for i in data:
         print("-----------------")
@@ -32,22 +24,20 @@ def get_allF():
         print("-----------------")
 
 def hola():
-    iden = input("Digite su número de identificación: ")
+    
+    utils.clean_console()
+    
     bill1 = database.get_data_in_database(database_name5)
     loop = True
-    a = []
     while loop:
+        iden = input("Digite su número de identificación: ")
         for i in bill1:
-            for j in i:
-                 if j == ("noid1: " + iden):
-                    a = i
-                    print(i)
-                    loop = False
-                    break
-        break
-    if len(a) == 0:
-        print("No existe una factura asociada a este cliente")
-
-#def fin_servicio(archivo):
-#    data = {}
-#    v
+            if i["noid1"] == iden:
+                keys = i.keys()
+                for j in keys:
+                    print(str(j) + ": " + str(i[j]))
+                print()
+                loop = False
+            else:
+                print("No existe una factura asociada a este cliente")
+                break
