@@ -1,4 +1,5 @@
 import database
+import utils
 
 # vehicles
 # placa, marca, modelo, cilindrada, color, tipo de servicio (particular, carga,
@@ -9,17 +10,10 @@ import database
 database_name = "vehicles"
 props = [
     {
-        "data": "cliente",
-        "display": "Digite el numero de identificación del cliente",
-        "value": "",
-        "type": "string",
-        "ajust": "12"
-    },
-    {
         "data": "placa",
         "display": "Digite el numero de la placa",
         "value": "",
-        "type": "int",
+        "type": "string",
         "ajust": "6"
     },
     {
@@ -94,6 +88,10 @@ def validate_prop(prop):
     # validación de propiedades
     # se valida en tipo de propiedad (int, string) y si su valor es valido
 
+    if prop["value"] == "":
+        print("El valor de " + prop["data"] + " no puede ser nulo")
+        error = True
+
     if prop["type"] == "int" and type(prop["value"]) == prop["type"]:
         print("El valor de " + prop["data"] + " es invalido")
         error = True
@@ -108,8 +106,10 @@ def validate_prop(prop):
 
     return error
 
-
 def insert():
+
+    utils.clean_console()
+
     data = {}
     for i in props:
         bucle = True
@@ -121,21 +121,29 @@ def insert():
                 if i["data"] == "placa":
                     # Cuando la propiedad sea la placa validar si existe otra igual en la base de datos
                     if database.get_by_property(database_name, "placa", i["value"]) == False:
-                        data[i["data"]] = i["value"]
+                        if i["type"] == "int":
+                            data[i["data"]] = int(i["value"])
+                        else:    
+                            data[i["data"]] = i["value"]
                         bucle = False
                     else:
                         print()
                         print("Ya existe un vehiculo con esta placa.")
                         print()
                 else:
-                    data[i["data"]] = i["value"]
+                    if i["type"] == "int":
+                        data[i["data"]] = int(i["value"])
+                    else:    
+                        data[i["data"]] = i["value"]
                     bucle = False
 
     database.save_in_database(database_name, data)
     print("Guardado en la base de datos")
 
-
 def get_all():
+
+    utils.clean_console()
+
     data = database.get_data_in_database(database_name)
     if len(data) > 0:
         for i in data:
@@ -146,8 +154,43 @@ def get_all():
                     print(str(j) + ": " + str(i[j]))
                 print("----------------")
 
+def get_all_order_by():
+
+    utils.clean_console()
+    bucle = True
+
+    while bucle:
+
+
+        print("Digite s en cualquier momento para salir.")
+        property = str(input("Digita la propiedad para ordenar los vehiculos: "))
+        if property.lower() != "s":
+            if database.validate_database_props(database_name, property):
+
+                utils.clean_console()
+                data = database.get_data_in_database_order_by(database_name, property)
+                if len(data) > 0:
+                    for i in data:
+                        if i != False:
+                            keys = i.keys()
+                            print("----------------")
+                            for j in keys:
+                                print(str(j) + ": " + str(i[j]))
+                            print("----------------")
+
+            else:
+                utils.clean_console()
+                print("Las propiedades le los vehiculos son las siguientes: ")
+                print()
+                database.list_all_properties(database_name)
+                print()
+        else: 
+            bucle = False
 
 def get_one():
+
+    utils.clean_console()
+
     bucle = True
     while bucle:
         try:
@@ -159,12 +202,15 @@ def get_one():
                     database_name, "placa", vehicle_plate)
 
                 if vehicle != False:
+                    utils.clean_console()
+
                     keys = vehicle.keys()
                     print("----------------")
                     for j in keys:
                         print(str(j) + ": " + str(vehicle[j]))
                     print("----------------")
                 else:
+                    utils.clean_console()
                     print()
                     print("No existe ningun vehiculo asociado a esta placa. ")
                     print()
@@ -174,39 +220,10 @@ def get_one():
         except NameError:
             print("No due posible eliminar el vehiculo.")
 
-
-def get_customer_vehicles():
-    bucle = True
-    while bucle:
-
-        print("Digite s en cualquier momento para salir.")
-        customer_id = str(
-            input("Digite el numero de identificación del cliente: "))
-
-        if customer_id.lower() != "s":
-            customer_vehicles = database.get_multi_database_data(
-                database_name, "cliente", customer_id)
-
-            if type(customer_vehicles) == list and len(customer_vehicles) > 0:
-                print()
-                print("Existen " + str(len(customer_vehicles)) +
-                      " vehiculos asociados a este numero de indentificación.")
-                for i in customer_vehicles:
-                    keys = i.keys()
-                    print("----------------")
-                    for j in keys:
-                        print(str(j) + ": " + str(i[j]))
-                    print("----------------")
-                print()
-            else:
-                print()
-                print("No existen vehiculos asociados a este numero de identificación.")
-                print()
-        else:
-            bucle = False
-
-
 def delete_vehicle_by_plate():
+
+    utils.clean_console()
+
     bucle = True
     while bucle:
         try:
@@ -222,20 +239,21 @@ def delete_vehicle_by_plate():
         except NameError:
             print("No due posible eliminar el vehiculo.")
 
-
 def show_menu():
+
+    utils.clean_console()
+
     print()
     print(" ---- Menu (vehiculos) ---- ")
     print()
     print("1. Agregar un carro [1]")
     print("2. Ver todos los carros [2]")
-    print("3. Buscar carros de un cliente [3]")
-    print("4. Eliminar un vehiculo por su placa [4]")
-    print("5. Buscar un vehiculo por su placa [5]")
+    print("3. Eliminar un vehiculo por su placa [3]")
+    print("4. Buscar un vehiculo por su placa [4]")
+    print("5. Ordenar vehiculos [5]")
     print("6. Mostrar menú [6]")
     print("7. Salir [7]")
     print()
-
 
 def start():
     database.create_database(database_name)
@@ -246,22 +264,28 @@ def start():
     while bucle:
         try:
             print("6. Mostrar menú [6]")
-            option = int(input("Digita la opción que desees ejecutar: "))
+            option = input("Digita la opción que desees ejecutar: ")
             print()
-            if option == 1:
-                insert()
-            elif option == 2:
-                get_all()
-            elif option == 3:
-                get_customer_vehicles()
-            elif option == 4:
-                delete_vehicle_by_plate()
-            elif option == 5:
-                get_one()
-            elif option == 6:
-                show_menu()
-            elif option == 7:
-                bucle = False
+
+            if option == "1" or option == "2" or option == "3" or option == "4" or option == "5" or option == "6" or option == "7":
+
+                if option == "1":
+                    insert()
+                elif option == "2":
+                    get_all()
+                elif option == "3":
+                    delete_vehicle_by_plate()
+                elif option == "4":
+                    get_one()
+                elif option == "5":
+                    get_all_order_by()
+                elif option == "6":
+                    show_menu()
+                elif option == "7":
+                    bucle = False
+
+            else:
+                print("Debes selccionar una opcion del menú.")
             print()
 
         except NameError:
@@ -269,3 +293,5 @@ def start():
             print("6. Mostrar menú [6]")
             print("La opción digitada es invalida (debe ser un número en el menú).")
             print()
+
+start()
