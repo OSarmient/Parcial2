@@ -2,3 +2,4 @@
 {'placa': 'CRV250', 'marca': 'Cissan', 'modelo': 'CTAR Nismo', 'cilindrada': 2752, 'color': 'Wlanco', 'tipo': 'Deportivo', 'combustible': 'Extra', 'pasajeros': 2, 'chasis': 358, 'motor': 763, 'uid': 1}
 {'placa': 'DRV250', 'marca': 'Dissan', 'modelo': 'DTAR Nismo', 'cilindrada': 1752, 'color': 'Blanco', 'tipo': 'Deportivo', 'combustible': 'Extra', 'pasajeros': 2, 'chasis': 458, 'motor': 8263, 'uid': 2}
 {'placa': 'BYB233', 'marca': 'Toyota', 'modelo': 'Rav', 'cilindrada': 2500, 'color': 'Azul', 'tipo': 'Familiar', 'combustible': 'Corriente', 'pasajeros': 4, 'chasis': 458, 'motor': 256, 'uid': 3}
+{'placa': 'ASD258', 'marca': 'Ferrari', 'modelo': 'La Ferrari', 'cilindrada': 8566, 'color': 'rojo', 'tipo': 'Deportivo', 'combustible': 'EXtra', 'pasajeros': 2, 'chasis': 256, 'motor': 258, 'uid': 4}
