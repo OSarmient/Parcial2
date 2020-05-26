@@ -1,5 +1,7 @@
 import database
 import Facturas
+import utils
+
 #servicios 2
 
 database_name = "clients"
@@ -9,7 +11,6 @@ database_name4 = "service_asked"
 
 
 def relation():
-    data = []
     bucle = True
     while bucle:
 
@@ -18,18 +19,13 @@ def relation():
             input("Digite el numero de identificación del cliente: "))
 
         if client1.lower() != "s":
-            client4 = database.get_multi_database_data2(
+            client4 = database.get_multi_database_data(
                 database_name, "noid1", client1)
             if type(client4) == list and len(client4) > 0:
-                insert_list(client4, data)
-                get_vehicles1(database_name2, client1)
-                plate1 = input("Digite la placa del vehiculo que desea realizar el servicio: ")
-                placa(database_name2, client1, plate1, data)
-                serv(database_name3, data)
-                ciclo(database_name3,data)
+                placa(database_name2, client4)
+                serv(database_name3, client4)
+                ciclo(database_name3, client4)
                 print("Transacción confirmada")
-                database.save_in_database2(database_name4, data)
-                Facturas.get_bills(client1)
                 bucle = False
             else:
                 print()
@@ -38,96 +34,66 @@ def relation():
         else:
             bucle = False
             
-def get_vehicles1(database_name, customer_id):
-    bucle = True
-    while bucle:
-
-        if customer_id.lower() != "s":
-            customer_vehicles = database.get_multi_database_data2(
-                database_name, "cliente", customer_id)
-            if type(customer_vehicles) == list and len(customer_vehicles) > 0:
-                print()
-                print("Existen " + str(len(customer_vehicles)) +
-                      " vehiculos asociados a este numero de indentificación.")
-                for i in customer_vehicles:
-                    print("----------------")
-                    print(str([i][0]["marca"]) + ": " + str([i][0]["placa"]))
-                    print("----------------")
-                print()
-                bucle = False
-            else:
-                print()
-                print("No existen vehiculos asociados a este numero de identificación.")
-                print()
-                customer_id = str(
-                    input("Digite el numero de identificación del cliente: "))
-        else:
-            bucle = False
             
-def placa(database_name, customer_id, plate, data):
+def placa(database_name, client):
+
+    utils.clean_console()
+    
+    get_all(database_name)
+    print()
     bucle = True
     while bucle:
-        customer_vehicles = database.get_multi_database_data2(
-        database_name, "cliente", customer_id)
-        customer_plate = "s"
-        for i in range(len(customer_vehicles)): 
-            customer_plate = customer_vehicles[i]["placa"]
-            vehicle_list = customer_vehicles[i]
-            if plate == customer_plate:
-                print()
-                bucle = False
-                break
-        if plate!=customer_plate:
+        plate = input("Digite la placa del vehiculo que desea realizar el servicio: ")
+        customer_vehicles = database.get_multi_database_data(
+        database_name, "placa", plate)
+        if type(customer_vehicles) == list and len(customer_vehicles) > 0:
+            client[0].update(customer_vehicles[0])
+            bucle = False
+        else:
             print()
-            print("No existen vehiculos asociados a esta placa")
+            print("No existe un vehiculo asociado a esta placa. ")
             print()
-            plate = input("Digite la placa del vehiculo que desea realizar el servicio: ")
-    del vehicle_list["cliente"]
-    ve_li=[]
-    ve_li.append(vehicle_list)
-    insert_list(ve_li, data)
+            
+def serv(database_name, client):
+
+    utils.clean_console()
     
-def serv(database_name, data):
     get_all(database_name)
     bucle = True
     while bucle:
         service1 = input("Digite el codigo del servicio que desea: ")
-        vehicles_service = database.get_multi_database_data2(
-                database_name, "numero_servicio", service1)
+        vehicles_service = database.get_multi_database_data(
+                database_name, "numero", service1)
         if type(vehicles_service) == list and len(vehicles_service) > 0:
-            print()
+            client[0].update(vehicles_service[0])
             bucle = False
         else:
             print()
             print("No existe un servicio asociado a este codigo. ")
             print()
-    insert_list(vehicles_service, data)
+    del client[0]["uid"]
+    database.save_in_database(database_name4, client[0])
+    Facturas.get_bills(client)
 
-def ciclo(database_name, data):
+def ciclo(database_name, client):
     loop = True
     while loop:
         ask = input("Desea agregar otro servicio, Si o No? ")
         if ask.lower() == "si":
-            serv(database_name, data)
+            serv(database_name, client)
         elif ask.lower() == "no":
             loop = False
         else:
             print("Debe responder Si o No")
-            ask = input("Desea agregar otro servicio, Si o No? ")
-
-def insert_list(lista, data):
-    for i in lista:
-        keys = i.keys()
-        for j in keys:
-            data.append(str(j) + ": " + str(i[j]))
-    data.pop()
 
 def get_all(database_name):
+
+    utils.clean_console()
+    
     data = database.get_data_in_database(database_name)
     print()
     for i in data:
         keys = i.keys()
         for j in keys:
             print(str(j) + ": " + str(i[j]))
-    print()
-
+        print()
