@@ -1,5 +1,5 @@
-{'numero_servicio':'123456', 'nombre_servicio': 'Cambio de aceite       ' , 'precio': '500000', 'horas': '2'}
-{'numero_servicio':'456789', 'nombre_servicio': 'Mantenimiento mecanico ' , 'precio': '250000', 'horas': '4'}
-{'numero_servicio':'123789', 'nombre_servicio': 'Electricidad automotriz' , 'precio': '700000', 'horas': '2'}
-{'numero_servicio':'456123', 'nombre_servicio': 'Frenos                 ' , 'precio': '400000', 'horas': '3'}
-{'numero_servicio':'789456', 'nombre_servicio': 'Latoneria y pintura    ' , 'precio': '100000', 'horas': '6'}
+{'numero':'123456', 'nombre': 'Cambio de aceite       ' , 'precio': '500000', 'horas': '2'}
+{'numero':'456789', 'nombre': 'Mantenimiento mecanico ' , 'precio': '250000', 'horas': '4'}
+{'numero':'123789', 'nombre': 'Electricidad automotriz' , 'precio': '700000', 'horas': '2'}
+{'numero':'456123', 'nombre': 'Frenos                 ' , 'precio': '400000', 'horas': '3'}
+{'numero':'789456', 'nombre': 'Latoneria y pintura    ' , 'precio': '100000', 'horas': '6'}
