@@ -19,8 +19,9 @@ def get_allF():
     
     data = database.get_data_in_database(database_name5)
     for i in data:
-        print("-----------------")
-        print (i)
+        keys = i.keys()
+        for j in keys:
+            print(str(j) + ": " + str(i[j]))
         print("-----------------")
 
 def hola():
