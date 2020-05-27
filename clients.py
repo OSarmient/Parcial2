@@ -227,7 +227,7 @@ def start1():
                 get1_client()
             elif option == 4:
                 delete_client1()
-           elif option == 5:
+            elif option == 5:
                 get_all_order_by()
             elif option == 6:
                 show_ops()
