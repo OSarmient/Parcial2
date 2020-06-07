@@ -88,7 +88,8 @@ class Database:
                         output_data = database_data[i]
 
                 if output_data == False:
-                    print("No existe el uid " + uid + " en la base de datos.")
+                    # print("No existe el uid " + str(uid) +
+                    #       " en la base de datos.")
                     return False
                 else:
                     return output_data
