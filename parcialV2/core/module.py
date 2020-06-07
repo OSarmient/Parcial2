@@ -5,6 +5,26 @@ from .utils import clean_console
 class ModuleBase:
     def __init__(self):
         self.database = Database(self.database_name)
+        self.options = []
+        self.add_options()
+
+    def add_options(self):
+        self.default_options = [
+            {
+                "display": "Listar todos los datos",
+                "function": self.get_all
+            }, {
+                "display": "Ver menú",
+                "function": self.print_menu
+            },
+        ]
+
+        for i in self.default_options:
+            self.options.append(i)
+
+        if len(self.menu_options) > 0:
+            for i in self.menu_options:
+                self.options.append(i)
 
     def print_data(self, data):
         for i in data:
@@ -33,3 +53,29 @@ class ModuleBase:
 
     def clean(self):
         self.database.clean()
+
+    def print_menu(self):
+        clean_console()
+        print()
+        print("-- " + str(self.database_name) + " Menu --")
+        print()
+        for i in range(0, len(self.options)):
+            print(str(i + 1) + ". " + self.options[i]["display"])
+        print()
+
+    def start(self):
+        bucle = True
+        self.print_menu()
+        print()
+
+        while bucle:
+            print("Presiona S para salir en cualquier momento.")
+            print("Presiona 2 para ver menú.")
+            selected_option = str(input("Selecciona una opcion del menú: "))
+
+            if(selected_option == "s" or selected_option == "S"):
+                bucle = False
+
+            if bucle == True:
+                self.options[int(selected_option) - 1]["function"]()
+                print()
