@@ -10,7 +10,7 @@ def show_menu():
     print("2. Vehiculos. [2]")
     print("3. Servicios. [3]")
     print("4. Mostar Facturas[4]")
-    print("5. Buscar Factura [5]")
+    print("5. Buscar Facturas de un cliente [5]")
     print("6. Mostar menu. [6]")
     print("7. Salir [7]")
 

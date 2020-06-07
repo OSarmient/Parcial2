@@ -1,5 +1,6 @@
 import database
 import Servicios_2
+import utils
 
 mode = "dev"
 database_name = "service"
@@ -9,7 +10,7 @@ database_nameA = "service_saked"
 
 props = [
     {
-        "data": "numero_servicio",
+        "data": "numero",
         "display": "Escriba el codigo que el servicio que deaea: ",
         "value": "",
         "type": "int",
@@ -17,7 +18,7 @@ props = [
     },
 
     {
-        "data": "nombre_servcio",
+        "data": "nombre",
         "display": "Escriba el nombre de el servicio que desea: ",
         "value": "",
         "type": "str",
@@ -25,7 +26,7 @@ props = [
     },
 
     {
-        "data": "precio_unitario",
+        "data": "precio",
         "display": "Escriba cuanto cuaesta el servicio por hora: ",
         "value": "",
         "type": "int",
@@ -63,7 +64,7 @@ def insertS():
         while bucle:
             i["value"] = input(i["display"] + ": ")
             for a in range(len(SC)):
-                if SC[a]["numero_servicio"] == i["value"]:
+                if SC[a]["numero"] == i["value"]:
                     verify = True
             if validate_props(i) == False and verify == False:
                 data[i["data"]] = i["value"]
@@ -77,15 +78,36 @@ def insertS():
 
 
 def get1_all():
-    print()
-    data = database.get_data_in_database(database_name)
-    for i in data:
-        keys = i.keys()
-        print("----------------")
-        for j in keys:
-            print(str(j) + ": " + str(i[j]))
-            print("----------------")
+    utils.clean_console()
+    bucle = True
 
+    while bucle:
+
+
+        print("Digite s en cualquier momento para salir.")
+        property = str(input("Digita la propiedad para ordenar los servicios: "))
+        if property.lower() != "s":
+            if database.validate_database_props(database_name, property):
+
+                utils.clean_console()
+                data = database.get_data_in_database_order_by(database_name, property)
+                if len(data) > 0:
+                    for i in data:
+                        if i != False:
+                            keys = i.keys()
+                            print("----------------")
+                            for j in keys:
+                                print(str(j) + ": " + str(i[j]))
+                            print("----------------")
+
+            else:
+                utils.clean_console()
+                print("Las propiedades le los vehiculos son las siguientes: ")
+                print()
+                database.list_all_properties(database_name)
+                print()
+        else: 
+            bucle = False
 
 
 def get_vehicles_service():
@@ -98,7 +120,7 @@ def get_vehicles_service():
 
         if vehicle_plate.lower() != "s":
             vehicle_service = database.get_multi_database_data(
-                database_name, "numero_servicio", vehicle_plate)
+                database_name, "numero", vehicle_plate)
 
             if type(vehicle_service) == list and len(vehicle_service) > 0:
                 print()
@@ -126,7 +148,7 @@ def delete_service_by_code():
 
             if service_code.lower() != "s":
                 database.delete_data_by_property(
-                    database_name, "numero_servicio", service_code)
+                    database_name, "numero", service_code)
             else:
                 bucle = False
         except NameError:

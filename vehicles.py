@@ -218,7 +218,7 @@ def get_one():
                 bucle = False
 
         except NameError:
-            print("No due posible eliminar el vehiculo.")
+            print("No fue posible eliminar el vehiculo.")
 
 def delete_vehicle_by_plate():
 
@@ -237,7 +237,7 @@ def delete_vehicle_by_plate():
                 bucle = False
 
         except NameError:
-            print("No due posible eliminar el vehiculo.")
+            print("No fue posible eliminar el vehiculo.")
 
 def show_menu():
 

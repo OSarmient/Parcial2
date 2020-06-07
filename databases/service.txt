@@ -1,7 +1,0 @@
-{'numero_servicio':'123456', 'nombre_servicio': 'Cambio de aceite       ' , 'precio': '500000', 'horas': '2'}
-{'numero_servicio':'456789', 'nombre_servicio': 'Mantenimiento mecanico ' , 'precio': '250000', 'horas': '4'}
-{'numero_servicio':'123789', 'nombre_servicio': 'Electricidad automotriz' , 'precio': '700000', 'horas': '2'}
-{'numero_servicio':'456123', 'nombre_servicio': 'Frenos                 ' , 'precio': '400000', 'horas': '3'}
-{'numero_servicio':'789456', 'nombre_servicio': 'Latoneria y pintura    ' , 'precio': '100000', 'horas': '6'}
-{'numero_servicio': '123', 'nombre_servcio': 'Despinchado', 'precio_unitario': '25000', 'horas': '2', 'uid': 5}
-{'numero_servicio': '152', 'nombre_servcio': 'Pintura', 'precio_unitario': '15800', 'horas': '1', 'uid': 6}
