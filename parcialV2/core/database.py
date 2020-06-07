@@ -212,8 +212,12 @@ class Database:
             return sorted(all_data, key=lambda i: i[property])
 
     def get_properties(self):
-        database_data = self.get_data_in_database()[0]
-        return list(database_data.keys())
+        if(len(self.get_data_in_database()) > 0):
+            database_data = self.get_data_in_database()[0]
+            return list(database_data.keys())
+        else:
+            print("La base de datos está vacia.")
+            return []
 
     def list_properties(self):
         keys = self.get_properties()
