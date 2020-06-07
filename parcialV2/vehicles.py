@@ -7,7 +7,10 @@ class Vehicles(ModuleBase):
         self.singularity = "vehiculo"
         self.singular = "El vehiculo"
         self.flush_singular = "un vehiculo"
-        self.menu_options = []
+        self.menu_options = [{
+            "display": "Custom menu action",
+            "function": self.exit
+        }]
         self.main_field = "placa"
         self.properties = [
             {
