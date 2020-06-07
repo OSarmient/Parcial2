@@ -228,12 +228,6 @@ class Database:
                 in_array = True
         return in_array
 
-
-# database = Database("vehicles")
-# data = {"name": "sebastian"}
-# for i in range(0,200):
-#     database.save_in_database(data)
-# print(database.delete_by_property("uid", 1))
-# print(database.get_orber_by_property("random"))
-# print(database.list_properties())
-# print(database.validate_prop("lol"))
+    def clean(self):
+        write_database = self._get_database("w")
+        write_database.write("")
