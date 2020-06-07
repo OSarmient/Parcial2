@@ -230,6 +230,7 @@ def delete_data_by_uid(database_name, property="uid", value=" "):
     else:
         print("No existe en la base de datos.")
 
+
 def get_data_in_database_order_by(database_name, property="uid"):
 
     # Obtener información de todas las filas y ordenarla segun la propiedad
@@ -245,13 +246,14 @@ def get_data_in_database_order_by(database_name, property="uid"):
 
         for i in range(len(all_data) - 1):
             big_data.append(ast.literal_eval(all_data[i]))
-        return sorted(big_data, key = lambda i: i[property])
+        return sorted(big_data, key=lambda i: i[property])
 
     else:
         if mode == "dev":
             print("la base de datos no existe")
         return False
     return False
+
 
 def validate_database_props(database_name, prop):
     in_array = False
@@ -261,6 +263,7 @@ def validate_database_props(database_name, prop):
         if i == prop:
             in_array = True
     return in_array
+
 
 def list_all_properties(database_name):
     database = get_database(database_name, "r")
@@ -274,6 +277,7 @@ def list_all_properties(database_name):
         return False
     return False
 
+
 def get_all_properties(database_name):
     database = get_database(database_name, "r")
     if database != False:
@@ -285,7 +289,7 @@ def get_all_properties(database_name):
             print("la base de datos no existe")
         return False
     return False
-    
+
     # ####Examples
 
     # ##Create database
