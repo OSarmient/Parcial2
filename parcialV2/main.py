@@ -53,3 +53,5 @@ class Main():
              #   print("La opción digitada es invalida (debe ser un número en el menú).")
               #  print()
         
+inicio = Main()
+inicio.start()
