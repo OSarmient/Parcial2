@@ -21,28 +21,31 @@ class Facturas(ModuleBase):
         print()     
 
     def hola(self):
-        
         clean_console()
         self.database = Database("facturas")
         bill1 = self.database.get_data_in_database()
         loop = True
+        v = True
         while loop:
-            iden = int(input("Digite el número de factura: "))
-            print()
-            for i in bill1:
-                if i["No. Factura"] == iden:
-                    keys = i.keys()
-                    for j in keys:
-                        print(str(j) + ": " + str(i[j]))
-                    print()
-                    v = True
-                    loop = False
-                    break
-                else:
-                    v = False
-            if v == False:
-                print("No existe una factura registrada a este número")
-
+            try: 
+                iden = int(input("Digite el número de factura: "))
+                print()
+                for i in bill1:
+                    if i["No. Factura"] == iden:
+                        keys = i.keys()
+                        for j in keys:
+                            print(str(j) + ": " + str(i[j]))
+                        print()
+                        v = True
+                        loop = False
+                        break
+                    else:
+                        v = False
+                if v == False:
+                    print("No existe una factura registrada a este número")
+            except:
+                print("Vuelva a digitar el número de factura")
+                
     def relation(self):
         bucle = True
         self.database = Database("clients")
