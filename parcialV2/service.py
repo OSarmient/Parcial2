@@ -49,5 +49,5 @@ class Service(ModuleBase):
 
         super().__init__()
     
-service = Service()
-service.start()
+#service = Service()
+#service.start()

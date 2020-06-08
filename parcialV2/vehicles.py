@@ -88,5 +88,5 @@ class Vehicles(ModuleBase):
         super().__init__()
 
 
-vehicles = Vehicles()
-vehicles.start()
+#vehicles = Vehicles()
+#vehicles.start()
