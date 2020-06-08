@@ -1,4 +1,6 @@
 from core.module import ModuleBase
+from bills import Facturas
+
 
 class Service(ModuleBase):
     def __init__(self):
@@ -6,8 +8,11 @@ class Service(ModuleBase):
         self.singularity = "servicio"
         self.singular = "El servicio"
         self.flush_singular = "un servicio"
-        self.menu_options = []
-        self.main_field = "placa"
+        self.menu_options = [{
+            "display": "Solicitar un servicio",
+            "function": Facturas().relation
+        }]
+        self.main_field = "numero"
         self.properties = [
             {
                 "data": "numero",
