@@ -52,6 +52,7 @@ class Main():
             #    print("7. Mostrar menú de modulos [7]")
              #   print("La opción digitada es invalida (debe ser un número en el menú).")
               #  print()
-        
+
+
 inicio = Main()
 inicio.start()
