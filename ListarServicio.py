@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# ListarServicio implementation generated from reading ui file 'ListarServicio.ui'
+# Form implementation generated from reading ui file 'ListarServicio.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -11,19 +11,15 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_ListarServicio(object):
-    def setupUi(self, ListarServicio):
-        ListarServicio.setObjectName("ListarServicio")
-        ListarServicio.resize(605, 498)
-        self.direccion = QtWidgets.QPushButton(ListarServicio)
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(604, 498)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.direccion = QtWidgets.QPushButton(self.centralwidget)
         self.direccion.setGeometry(QtCore.QRect(490, 190, 101, 23))
         self.direccion.setObjectName("direccion")
-        self.NombreServicio = QtWidgets.QPushButton(ListarServicio)
-        self.NombreServicio.setGeometry(QtCore.QRect(490, 110, 101, 23))
-        self.NombreServicio.setObjectName("NombreServicio")
-        self.Costo = QtWidgets.QPushButton(ListarServicio)
-        self.Costo.setGeometry(QtCore.QRect(490, 150, 101, 23))
-        self.Costo.setObjectName("Costo")
-        self.scrollArea = QtWidgets.QScrollArea(ListarServicio)
+        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollArea.setGeometry(QtCore.QRect(10, 10, 461, 401))
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
@@ -34,25 +30,39 @@ class Ui_ListarServicio(object):
         self.TablaListaServicios.setGeometry(QtCore.QRect(0, 0, 461, 401))
         self.TablaListaServicios.setObjectName("TablaListaServicios")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.NoCodigo = QtWidgets.QPushButton(ListarServicio)
+        self.NoCodigo = QtWidgets.QPushButton(self.centralwidget)
         self.NoCodigo.setGeometry(QtCore.QRect(490, 70, 101, 23))
         self.NoCodigo.setObjectName("NoCodigo")
-        self.CerrarLista = QtWidgets.QPushButton(ListarServicio)
-        self.CerrarLista.setGeometry(QtCore.QRect(500, 440, 75, 23))
-        self.CerrarLista.setObjectName("CerrarLista")
-        self.DatosCliente = QtWidgets.QLabel(ListarServicio)
+        self.DatosCliente = QtWidgets.QLabel(self.centralwidget)
         self.DatosCliente.setGeometry(QtCore.QRect(500, 20, 111, 51))
         self.DatosCliente.setObjectName("DatosCliente")
+        self.Costo = QtWidgets.QPushButton(self.centralwidget)
+        self.Costo.setGeometry(QtCore.QRect(490, 150, 101, 23))
+        self.Costo.setObjectName("Costo")
+        self.NombreServicio = QtWidgets.QPushButton(self.centralwidget)
+        self.NombreServicio.setGeometry(QtCore.QRect(490, 110, 101, 23))
+        self.NombreServicio.setObjectName("NombreServicio")
+        self.CerrarLista = QtWidgets.QPushButton(self.centralwidget)
+        self.CerrarLista.setGeometry(QtCore.QRect(500, 440, 75, 23))
+        self.CerrarLista.setObjectName("CerrarLista")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 604, 21))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(ListarServicio)
-        QtCore.QMetaObject.connectSlotsByName(ListarServicio)
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def retranslateUi(self, ListarServicio):
+    def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        ListarServicio.setWindowTitle(_translate("ListarServicio", "ListarServicio"))
-        self.direccion.setText(_translate("ListarServicio", "Horas del servicio"))
-        self.NombreServicio.setText(_translate("ListarServicio", "Nombre se servicio"))
-        self.Costo.setText(_translate("ListarServicio", "Costo por hora"))
-        self.NoCodigo.setText(_translate("ListarServicio", "Codigo de servicio"))
-        self.CerrarLista.setText(_translate("ListarServicio", "Cerrar"))
-        self.DatosCliente.setText(_translate("ListarServicio", "Ordenar Datos:"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.direccion.setText(_translate("MainWindow", "Horas del servicio"))
+        self.NoCodigo.setText(_translate("MainWindow", "Codigo de servicio"))
+        self.DatosCliente.setText(_translate("MainWindow", "Ordenar Datos:"))
+        self.Costo.setText(_translate("MainWindow", "Costo por hora"))
+        self.NombreServicio.setText(_translate("MainWindow", "Nombre se servicio"))
+        self.CerrarLista.setText(_translate("MainWindow", "Cerrar"))

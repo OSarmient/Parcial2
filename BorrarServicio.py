@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# BorrarServicio implementation generated from reading ui file 'BorrarServicio.ui'
+# Form implementation generated from reading ui file 'BorrarServicio.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -11,28 +11,38 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_BorrarServicio(object):
-    def setupUi(self, BorrarServicio):
-        BorrarServicio.setObjectName("BorrarServicio")
-        BorrarServicio.resize(432, 188)
-        self.CancelarBorrarS = QtWidgets.QPushButton(BorrarServicio)
-        self.CancelarBorrarS.setGeometry(QtCore.QRect(320, 130, 75, 23))
-        self.CancelarBorrarS.setObjectName("CancelarBorrarS")
-        self.TxtID = QtWidgets.QLabel(BorrarServicio)
-        self.TxtID.setGeometry(QtCore.QRect(40, 40, 121, 31))
-        self.TxtID.setObjectName("TxtID")
-        self.IngresoCodigo = QtWidgets.QTextEdit(BorrarServicio)
-        self.IngresoCodigo.setGeometry(QtCore.QRect(40, 80, 351, 31))
-        self.IngresoCodigo.setObjectName("IngresoCodigo")
-        self.ConfirmarBorrarS = QtWidgets.QPushButton(BorrarServicio)
-        self.ConfirmarBorrarS.setGeometry(QtCore.QRect(230, 130, 75, 23))
-        self.ConfirmarBorrarS.setObjectName("ConfirmarBorrarS")
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(434, 188)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.IngresoCodigo_2 = QtWidgets.QTextEdit(self.centralwidget)
+        self.IngresoCodigo_2.setGeometry(QtCore.QRect(30, 60, 351, 31))
+        self.IngresoCodigo_2.setObjectName("IngresoCodigo_2")
+        self.CancelarBorrarS_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.CancelarBorrarS_2.setGeometry(QtCore.QRect(310, 110, 75, 23))
+        self.CancelarBorrarS_2.setObjectName("CancelarBorrarS_2")
+        self.ConfirmarBorrarS_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.ConfirmarBorrarS_2.setGeometry(QtCore.QRect(220, 110, 75, 23))
+        self.ConfirmarBorrarS_2.setObjectName("ConfirmarBorrarS_2")
+        self.TxtID_2 = QtWidgets.QLabel(self.centralwidget)
+        self.TxtID_2.setGeometry(QtCore.QRect(30, 20, 121, 31))
+        self.TxtID_2.setObjectName("TxtID_2")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 434, 21))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(BorrarServicio)
-        QtCore.QMetaObject.connectSlotsByName(BorrarServicio)
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def retranslateUi(self, BorrarServicio):
+    def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        BorrarServicio.setWindowTitle(_translate("BorrarServicio", "BorrarServicio"))
-        self.CancelarBorrarS.setText(_translate("BorrarServicio", "Cancelar"))
-        self.TxtID.setText(_translate("BorrarServicio", "No. de identificacion"))
-        self.ConfirmarBorrarS.setText(_translate("BorrarServicio", "Borrar"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.CancelarBorrarS_2.setText(_translate("MainWindow", "Cancelar"))
+        self.ConfirmarBorrarS_2.setText(_translate("MainWindow", "Borrar"))
+        self.TxtID_2.setText(_translate("MainWindow", "No. de identificacion"))

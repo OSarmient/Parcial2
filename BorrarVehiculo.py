@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# BorrarVehiculo implementation generated from reading ui file 'BorrarVehiculo.ui'
+# Form implementation generated from reading ui file 'BorrarVehiculo.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -11,28 +11,38 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_BorrarVehiculo(object):
-    def setupUi(self, BorrarVehiculo):
-        BorrarVehiculo.setObjectName("BorrarVehiculo")
-        BorrarVehiculo.resize(430, 192)
-        self.CancelarBorrarV = QtWidgets.QPushButton(BorrarVehiculo)
-        self.CancelarBorrarV.setGeometry(QtCore.QRect(320, 120, 75, 23))
-        self.CancelarBorrarV.setObjectName("CancelarBorrarV")
-        self.TxtID = QtWidgets.QLabel(BorrarVehiculo)
-        self.TxtID.setGeometry(QtCore.QRect(40, 30, 101, 31))
-        self.TxtID.setObjectName("TxtID")
-        self.IngresoPlaca = QtWidgets.QTextEdit(BorrarVehiculo)
-        self.IngresoPlaca.setGeometry(QtCore.QRect(40, 70, 351, 31))
-        self.IngresoPlaca.setObjectName("IngresoPlaca")
-        self.ConfirmarBorrarV = QtWidgets.QPushButton(BorrarVehiculo)
-        self.ConfirmarBorrarV.setGeometry(QtCore.QRect(230, 120, 75, 23))
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(430, 193)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.ConfirmarBorrarV = QtWidgets.QPushButton(self.centralwidget)
+        self.ConfirmarBorrarV.setGeometry(QtCore.QRect(230, 110, 75, 23))
         self.ConfirmarBorrarV.setObjectName("ConfirmarBorrarV")
+        self.IngresoPlaca = QtWidgets.QTextEdit(self.centralwidget)
+        self.IngresoPlaca.setGeometry(QtCore.QRect(40, 60, 351, 31))
+        self.IngresoPlaca.setObjectName("IngresoPlaca")
+        self.CancelarBorrarV = QtWidgets.QPushButton(self.centralwidget)
+        self.CancelarBorrarV.setGeometry(QtCore.QRect(320, 110, 75, 23))
+        self.CancelarBorrarV.setObjectName("CancelarBorrarV")
+        self.TxtID = QtWidgets.QLabel(self.centralwidget)
+        self.TxtID.setGeometry(QtCore.QRect(40, 20, 101, 31))
+        self.TxtID.setObjectName("TxtID")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 430, 21))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(BorrarVehiculo)
-        QtCore.QMetaObject.connectSlotsByName(BorrarVehiculo)
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def retranslateUi(self, BorrarVehiculo):
+    def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        BorrarVehiculo.setWindowTitle(_translate("BorrarVehiculo", "BorrarVehiculo"))
-        self.CancelarBorrarV.setText(_translate("BorrarVehiculo", "Cancelar"))
-        self.TxtID.setText(_translate("BorrarVehiculo", "No. de identificacion"))
-        self.ConfirmarBorrarV.setText(_translate("BorrarVehiculo", "Borrar"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.ConfirmarBorrarV.setText(_translate("MainWindow", "Borrar"))
+        self.CancelarBorrarV.setText(_translate("MainWindow", "Cancelar"))
+        self.TxtID.setText(_translate("MainWindow", "No. de identificacion"))

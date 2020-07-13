@@ -1,14 +1,14 @@
 from PyQt5 import QtWidgets
 from MainWindow import Ui_MainWindow
 from VentanaCliente import Ui_VentanaCliente
-from VentanaVehiculo import *
-from VentanaServicio import *
+from VentanaVehiculo import Ui_VentanaVehiculos
+from VentanaServicio import Ui_VentanaServicio
 from BorrarCliente import Ui_BorrarCliente
-from BorrarVehiculo import *
-from BorrarServicio import *
+from BorrarVehiculo import Ui_BorrarVehiculo
+from BorrarServicio import Ui_BorrarServicio
 from ListarCliente import Ui_ListarCliente
-from ListarVehiculos import *
-from ListarServicio import *
+from ListarVehiculos import Ui_ListarVehiculos
+from ListarServicio import Ui_ListarServicio
 from BuscarFactura import Ui_BuscarFactura
 import sys
 
@@ -16,7 +16,9 @@ class Window(QtWidgets.QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
         self.ui = Ui_MainWindow()
+        self.uiC = Ui_BorrarCliente()
         self.ui.setupUi(self)
+        #self.uiC.setupUi(self)
         self.ui.BotonCrearC.clicked.connect(self.abrirCreacionC)
         self.ui.BotonBorrarC.clicked.connect(self.abrirBorrarC)
         self.ui.BotonListarC.clicked.connect(self.abrirListaC)
@@ -27,6 +29,7 @@ class Window(QtWidgets.QMainWindow):
         self.ui.BotonBorrarS.clicked.connect(self.abrirBorrarS)
         self.ui.BotonListarS.clicked.connect(self.abrirListaS)
         self.ui.BuscarFactura.clicked.connect(self.buscarFactura)
+        #self.uiC.CancelarBorrarC.clicked.connect(self.Cancelar)
 
     def abrirCreacionC(self):
         self.crear = QtWidgets.QMainWindow()
@@ -87,6 +90,8 @@ class Window(QtWidgets.QMainWindow):
         self.ui.setupUi(self.crear)
         self.crear.show()
 
+    def Cancelar(self):
+        self.close()
 
 app = QtWidgets.QApplication([])
 application = Window()
