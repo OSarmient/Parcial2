@@ -23,36 +23,34 @@ class Main():
     def mainstart(self):
         bucle = True
         while bucle:
-            #try:
-            option = int(input("Digita la opción que desees ejecutar: "))
-            print()
-            if option == 1:
-                Clients().start()
-                self.menu()
-            elif option == 2:
-                Vehicles().start()
-                self.menu()
-            elif option == 3:
-                Service().start()
-                self.menu()
-            elif option == 4:
-                Facturas().get_all()
-                self.menu()
-            elif option == 5:
-                Facturas().hola()
-                self.menu()
-            elif option == 6:
-                self.menu()
-            elif option == 7:
-                bucle = False
-
+            try:
+                option = int(input("Digita la opción que desees ejecutar: "))
                 print()
-          #  except NameError:
-           #     print(NameError)
-            #    print("7. Mostrar menú de modulos [7]")
-             #   print("La opción digitada es invalida (debe ser un número en el menú).")
-              #  print()
+                if option == 1:
+                    Clients().start()
+                    self.menu()
+                elif option == 2:
+                    Vehicles().start()
+                    self.menu()
+                elif option == 3:
+                    Service().start()
+                    self.menu()
+                elif option == 4:
+                    Facturas().get_all()
+                    self.menu()
+                elif option == 5:
+                    Facturas().hola()
+                    self.menu()
+                elif option == 6:
+                    self.menu()
+                elif option == 7:
+                    bucle = False
 
+                    print()
+            except NameError:
+                print(NameError)
+                print("7. Mostrar menú de modulos [7]")
+                print("La opción digitada es invalida (debe ser un número en el menú).")
+                print()
 
-inicio = Main()
-inicio.start()
+Main()

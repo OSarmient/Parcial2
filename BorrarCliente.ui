@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>BorrarCliente</class>
+ <widget class="QMainWindow" name="BorrarCliente">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextEdit" name="textEdit_2">
+   <widget class="QTextEdit" name="IngresoID">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -24,7 +24,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="TxtID">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -34,10 +34,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>No de identificacion</string>
+     <string>No. de identificacion</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="CancelarBorrarC">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -50,7 +50,7 @@
      <string>Cancelar</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="ConfirmarBorrarC">
     <property name="geometry">
      <rect>
       <x>230</x>

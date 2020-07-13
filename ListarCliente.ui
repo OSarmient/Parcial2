@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>ListarCliente</class>
+ <widget class="QMainWindow" name="ListarCliente">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>677</width>
+    <width>604</width>
     <height>496</height>
    </rect>
   </property>
@@ -35,7 +35,7 @@
        <height>399</height>
       </rect>
      </property>
-     <widget class="QTableView" name="tableView">
+     <widget class="QTableView" name="TablaListaCliente">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -47,7 +47,7 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="DatosCliente">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -60,7 +60,7 @@
      <string>Ordenar Datos:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="No_ID">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -73,7 +73,7 @@
      <string>No de ID</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="Nombre">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -86,7 +86,7 @@
      <string>Nombre</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="Apellido">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -99,7 +99,7 @@
      <string>Apellido</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="direccion">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -112,7 +112,7 @@
      <string>Direnccion</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="Telefono">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -125,7 +125,7 @@
      <string>Telefono</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="Ciudad">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -138,11 +138,11 @@
      <string>Ciudad</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="CerrarLista">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>410</y>
+      <x>500</x>
+      <y>390</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -157,7 +157,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>677</width>
+     <width>604</width>
      <height>21</height>
     </rect>
    </property>

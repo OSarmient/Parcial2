@@ -1,205 +1,53 @@
-import database
-import Servicios_2
-import utils
-
-mode = "dev"
-database_name = "service"
-database_nameC = "clients"
-database_nameV = "vehicles"
-database_nameA = "service_saked"
-
-props = [
-    {
-        "data": "numero",
-        "display": "Escriba el codigo que el servicio que deaea: ",
-        "value": "",
-        "type": "int",
-        "ajust": "6"
-    },
-
-    {
-        "data": "nombre",
-        "display": "Escriba el nombre de el servicio que desea: ",
-        "value": "",
-        "type": "str",
-        "ajust": "25"
-    },
-
-    {
-        "data": "precio",
-        "display": "Escriba cuanto cuaesta el servicio por hora: ",
-        "value": "",
-        "type": "int",
-        "ajust": "7"
-    },
-
-    {
-        "data": "horas",
-        "display": "Escriba por cuantas horas quire contratar el servicio: ",
-        "value": "",
-        "type": "int",
-        "ajust": "2"
-    }
-]
+from core.module import ModuleBase
+from bills import Facturas
 
 
-def validate_props(props):
-    error = False
-    if props["type"] == "int" and type(props["value"]) == props["type"]:
-        print("El valor de " + props["data"] + " no es valido")
-        error = True
-    if props["type"] == "string" and type(props["value"]) == props["type"]:
-        error = True
-        print("El valor de " + props["data"] + " es invalido")
+class Service(ModuleBase):
+    def __init__(self):
+        self.database_name = "service"
+        self.singularity = "servicio"
+        self.singular = "El servicio"
+        self.flush_singular = "un servicio"
+        self.menu_options = [{
+            "display": "Solicitar un servicio",
+            "function": Facturas().relation
+        }]
+        self.main_field = "numero"
+        self.properties = [
+            {
+                "data": "numero",
+                "display": "Escriba el codigo que el servicio que deaea: ",
+                "value": "",
+                "type": "int",
+                "ajust": "6"
+            },
 
-    return error
+            {
+                "data": "nombre",
+                "display": "Escriba el nombre de el servicio que desea: ",
+                "value": "",
+                "type": "str",
+                "ajust": "25"
+            },
 
+            {
+                "data": "precio",
+                "display": "Escriba cuanto cuaesta el servicio por hora: ",
+                "value": "",
+                "type": "int",
+                "ajust": "7"
+            },
 
-def insertS():
-    data = {}
-    verify = False
-    SC = database.get_data_in_database(database_name)
-    for i in props:
-        bucle = True
-        while bucle:
-            i["value"] = input(i["display"] + ": ")
-            for a in range(len(SC)):
-                if SC[a]["numero"] == i["value"]:
-                    verify = True
-            if validate_props(i) == False and verify == False:
-                data[i["data"]] = i["value"]
-                bucle = False
-            else:
-                print(
-                    "Ya existe un servicio con ese codigo")
-                verify = False
-    database.save_in_database(database_name, data)
-    print("Guardado en la base de datos")
+            {
+                "data": "horas",
+                "display": "Escriba por cuantas horas quire contratar el servicio: ",
+                "value": "",
+                "type": "int",
+                "ajust": "2"
+            }
+        ]
 
-
-def get1_all():
-    utils.clean_console()
-    bucle = True
-
-    while bucle:
-
-
-        print("Digite s en cualquier momento para salir.")
-        property = str(input("Digita la propiedad para ordenar los servicios: "))
-        if property.lower() != "s":
-            if database.validate_database_props(database_name, property):
-
-                utils.clean_console()
-                data = database.get_data_in_database_order_by(database_name, property)
-                if len(data) > 0:
-                    for i in data:
-                        if i != False:
-                            keys = i.keys()
-                            print("----------------")
-                            for j in keys:
-                                print(str(j) + ": " + str(i[j]))
-                            print("----------------")
-
-            else:
-                utils.clean_console()
-                print("Las propiedades le los vehiculos son las siguientes: ")
-                print()
-                database.list_all_properties(database_name)
-                print()
-        else: 
-            bucle = False
-
-
-def get_vehicles_service():
-    bucle = True
-    while bucle:
-
-        print("Digite s en cualquier momento para salir.")
-        vehicle_plate = str(
-            input("Digite el codigo del servicio: "))
-
-        if vehicle_plate.lower() != "s":
-            vehicle_service = database.get_multi_database_data(
-                database_name, "numero", vehicle_plate)
-
-            if type(vehicle_service) == list and len(vehicle_service) > 0:
-                print()
-                for i in vehicle_service:
-                    keys = i.keys()
-                    print("----------------")
-                    for j in keys:
-                        print(str(j) + ": " + str(i[j]))
-                    print("----------------")
-                print()
-            else:
-                print()
-                print("No existe este servicio.")
-                print()
-        else:
-            bucle = False
-
-
-def delete_service_by_code():
-    bucle = True
-    while bucle:
-        try:
-            print("Digite s en cualquier momento para salir")
-            service_code = str(input("Escriba el codigo del servicio: "))
-
-            if service_code.lower() != "s":
-                database.delete_data_by_property(
-                    database_name, "numero", service_code)
-            else:
-                bucle = False
-        except NameError:
-            print("No es posible eliminar el servicio.")
-
-
-def show_menu():
-    print()
-    print("---Menu servicios----: ")
-    print()
-    print("1. Nuevo servicio. [1]")
-    print("2. Buscar servicio. [2]")
-    print("3. Eliminar servicio. [3]")
-    print("4. Mostrar todos los servicios. [4]")
-    print("5. Pedir servicio [5]")
-    print("6, Mostrar menu [6]")
-    print("7. Salir. [7]")
-    print()
-
-
-def startS():
-    if mode == "dev":
-        database.create_database(database_name)
-
-    show_menu()
-
-    bucle = True
-    while bucle:
-
-        try:
-            print("6, Mostrar menu [6]")
-            option = int(input("Digita la opcion que desees ejecutar: "))
-            print()
-            if option == 1:
-                insertS()
-            elif option == 2:
-                get_vehicles_service()
-            elif option == 3:
-                delete_service_by_code()
-            elif option == 4:
-                get1_all()
-            elif option == 5:
-                Servicios_2.relation()
-            elif option == 6:
-                show_menu()
-            elif option == 7:
-                bucle = False
-
-        except NameError:
-            print(NameError)
-            print("5. Mostrar menu [5]")
-            print("La excepcion digitada es invalida")
-            print()
-
+        super().__init__()
+    
+#service = Service()
+#service.start()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>VentanaCliente</class>
+ <widget class="QMainWindow" name="VentanaCliente">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextEdit" name="textEdit_2">
+   <widget class="QTextEdit" name="IngresoID_C">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -24,7 +24,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_3">
+   <widget class="QTextEdit" name="IngresoNombre">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -34,7 +34,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_4">
+   <widget class="QTextEdit" name="IngresoTelefono">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -44,7 +44,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_5">
+   <widget class="QTextEdit" name="IngresoCiudad">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -54,7 +54,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_6">
+   <widget class="QTextEdit" name="IngresoApellido">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -64,7 +64,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_7">
+   <widget class="QTextEdit" name="IngrsoDireccion">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -74,7 +74,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="TxtNombre">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -87,7 +87,7 @@
      <string>Nombre</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="TxtApellido">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -100,7 +100,7 @@
      <string>Apellido</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="TxtID">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -113,7 +113,7 @@
      <string>No de identificacion</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="TxtDireccion">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -126,7 +126,7 @@
      <string>Direccion</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="TxtTelefono">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -139,7 +139,7 @@
      <string>Numero de telefono</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QLabel" name="TxtCiudad">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -152,7 +152,7 @@
      <string>Ciudad</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="AceptarInfoC">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -165,7 +165,7 @@
      <string>Aceptar</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="CancelarInfoC">
     <property name="geometry">
      <rect>
       <x>590</x>
