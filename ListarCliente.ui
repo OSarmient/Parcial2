@@ -35,7 +35,7 @@
        <height>399</height>
       </rect>
      </property>
-     <widget class="QTableView" name="TablaListaCliente">
+     <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -44,6 +44,36 @@
         <height>401</height>
        </rect>
       </property>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Apellido</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Dirección</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Teléfono</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ciudad</string>
+       </property>
+      </column>
      </widget>
     </widget>
    </widget>
