@@ -28,9 +28,9 @@ class Ui_BorrarVehiculo(object):
         self.TxtID = QtWidgets.QLabel(self.centralwidget)
         self.TxtID.setGeometry(QtCore.QRect(40, 20, 101, 31))
         self.TxtID.setObjectName("TxtID")
-        self.retranslateUi(BorrarVehiculo)
         self.CancelarBorrarV.clicked.connect(BorrarVehiculo.close)
         QtCore.QMetaObject.connectSlotsByName(BorrarVehiculo)
+        BorrarVehiculo.setCentralWidget(self.centralwidget)
         BorrarVehiculo.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(BorrarVehiculo)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 430, 21))
@@ -41,6 +41,7 @@ class Ui_BorrarVehiculo(object):
         BorrarVehiculo.setStatusBar(self.statusbar)
 
         self.retranslateUi(BorrarVehiculo)
+        self.ConfirmarBorrarV.clicked.connect(self.IngresoPlaca.selectAll)
         QtCore.QMetaObject.connectSlotsByName(BorrarVehiculo)
 
     def retranslateUi(self, BorrarVehiculo):

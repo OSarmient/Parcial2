@@ -31,9 +31,9 @@ class Ui_VentanaServicio(object):
         self.CancelarInfoS = QtWidgets.QPushButton(self.centralwidget)
         self.CancelarInfoS.setGeometry(QtCore.QRect(380, 290, 75, 23))
         self.CancelarInfoS.setObjectName("CancelarInfoS")
-        self.textEdit_7 = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit_7.setGeometry(QtCore.QRect(20, 100, 351, 31))
-        self.textEdit_7.setObjectName("textEdit_7")
+        self.IngresarNombre = QtWidgets.QTextEdit(self.centralwidget)
+        self.IngresarNombre.setGeometry(QtCore.QRect(20, 100, 351, 31))
+        self.IngresarNombre.setObjectName("IngresarNombre")
         self.NombreServicio = QtWidgets.QLabel(self.centralwidget)
         self.NombreServicio.setGeometry(QtCore.QRect(20, 70, 101, 31))
         self.NombreServicio.setObjectName("NombreServicio")
@@ -59,11 +59,15 @@ class Ui_VentanaServicio(object):
         VentanaServicio.setStatusBar(self.statusbar)
 
         self.retranslateUi(VentanaServicio)
+        self.AceptarInfoS.clicked.connect(self.IngresarCodigo.selectAll)
+        self.AceptarInfoS.clicked.connect(self.IngresarNombre.selectAll)
+        self.AceptarInfoS.clicked.connect(self.IngresarCosto.selectAll)
+        self.AceptarInfoS.clicked.connect(self.IngresarHoras.selectAll)
         QtCore.QMetaObject.connectSlotsByName(VentanaServicio)
 
     def retranslateUi(self, VentanaServicio):
         _translate = QtCore.QCoreApplication.translate
-        VentanaServicio.setWindowTitle(_translate("VentanaServicio", "VentanaServicio"))
+        VentanaServicio.setWindowTitle(_translate("VentanaServicio", "MainWindow"))
         self.CostoXHora.setText(_translate("VentanaServicio", "Costo por hora del servicio"))
         self.Horas.setText(_translate("VentanaServicio", "Horas del servicio"))
         self.CodigoServicio.setText(_translate("VentanaServicio", "Codigo del Servicio"))

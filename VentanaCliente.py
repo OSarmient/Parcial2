@@ -71,11 +71,17 @@ class Ui_VentanaCliente(object):
         VentanaCliente.setStatusBar(self.statusbar)
 
         self.retranslateUi(VentanaCliente)
+        self.AceptarInfoC.clicked.connect(self.IngresoID_C.selectAll)
+        self.AceptarInfoC.clicked.connect(self.IngresoNombre.selectAll)
+        self.AceptarInfoC.clicked.connect(self.IngresoApellido.selectAll)
+        self.AceptarInfoC.clicked.connect(self.IngrsoDireccion.selectAll)
+        self.AceptarInfoC.clicked.connect(self.IngresoTelefono.selectAll)
+        self.AceptarInfoC.clicked.connect(self.IngresoCiudad.selectAll)
         QtCore.QMetaObject.connectSlotsByName(VentanaCliente)
 
     def retranslateUi(self, VentanaCliente):
         _translate = QtCore.QCoreApplication.translate
-        VentanaCliente.setWindowTitle(_translate("VentanaCliente", "Cliente"))
+        VentanaCliente.setWindowTitle(_translate("VentanaCliente", "MainWindow"))
         self.TxtNombre.setText(_translate("VentanaCliente", "Nombre"))
         self.TxtApellido.setText(_translate("VentanaCliente", "Apellido"))
         self.TxtID.setText(_translate("VentanaCliente", "No de identificacion"))

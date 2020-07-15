@@ -41,6 +41,7 @@ class Ui_BuscarFactura(object):
         BuscarFactura.setStatusBar(self.statusbar)
 
         self.retranslateUi(BuscarFactura)
+        self.ConfirmarBuscar_2.clicked.connect(self.IngresoFactura_2.selectAll)
         QtCore.QMetaObject.connectSlotsByName(BuscarFactura)
 
     def retranslateUi(self, BuscarFactura):

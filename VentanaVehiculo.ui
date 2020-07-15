@@ -284,5 +284,166 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>AceptarInfoV</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarPlaca</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>432</x>
+     <y>647</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>354</x>
+     <y>74</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoV</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarMarca</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>424</x>
+     <y>650</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>356</x>
+     <y>130</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoV</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarModelo</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>653</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>357</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoV</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarCilindraje</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>403</x>
+     <y>647</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>352</x>
+     <y>251</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoV</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarColor</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>395</x>
+     <y>648</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>362</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoV</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarTipoServicio</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>445</x>
+     <y>651</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>377</x>
+     <y>375</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoV</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarCombustible</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>458</x>
+     <y>650</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>335</x>
+     <y>425</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoV</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarPasajeros</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>451</x>
+     <y>650</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>344</x>
+     <y>501</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoV</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarChasis</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>394</x>
+     <y>657</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>362</x>
+     <y>558</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoV</sender>
+   <signal>clicked()</signal>
+   <receiver>textEdit_9</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>439</x>
+     <y>655</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>627</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

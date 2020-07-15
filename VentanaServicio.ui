@@ -146,5 +146,70 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>AceptarInfoS</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarCodigo</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>325</x>
+     <y>319</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>327</x>
+     <y>78</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoS</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarNombre</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>307</x>
+     <y>321</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>302</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoS</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarCosto</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>351</x>
+     <y>320</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>193</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoS</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresarHoras</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>359</x>
+     <y>320</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

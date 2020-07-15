@@ -95,11 +95,21 @@ class Ui_VentanaVehiculos(object):
         VentanaVehiculo.setStatusBar(self.statusbar)
 
         self.retranslateUi(VentanaVehiculo)
+        self.AceptarInfoV.clicked.connect(self.IngresarPlaca.selectAll)
+        self.AceptarInfoV.clicked.connect(self.IngresarMarca.selectAll)
+        self.AceptarInfoV.clicked.connect(self.IngresarModelo.selectAll)
+        self.AceptarInfoV.clicked.connect(self.IngresarCilindraje.selectAll)
+        self.AceptarInfoV.clicked.connect(self.IngresarColor.selectAll)
+        self.AceptarInfoV.clicked.connect(self.IngresarTipoServicio.selectAll)
+        self.AceptarInfoV.clicked.connect(self.IngresarCombustible.selectAll)
+        self.AceptarInfoV.clicked.connect(self.IngresarPasajeros.selectAll)
+        self.AceptarInfoV.clicked.connect(self.IngresarChasis.selectAll)
+        self.AceptarInfoV.clicked.connect(self.textEdit_9.selectAll)
         QtCore.QMetaObject.connectSlotsByName(VentanaVehiculo)
 
     def retranslateUi(self, VentanaVehiculo):
         _translate = QtCore.QCoreApplication.translate
-        VentanaVehiculo.setWindowTitle(_translate("VentanaVehiculo", "Vehiculo"))
+        VentanaVehiculo.setWindowTitle(_translate("VentanaVehiculo", "MainWindow"))
         self.AceptarInfoV.setText(_translate("VentanaVehiculo", "Aceptar"))
         self.Placa.setText(_translate("VentanaVehiculo", "No. de placa"))
         self.TipoServicio.setText(_translate("VentanaVehiculo", "Tipo que servicio que realiza: publico/particular"))

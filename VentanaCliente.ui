@@ -192,5 +192,102 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>AceptarInfoC</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresoID_C</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>571</x>
+     <y>431</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>488</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoC</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresoNombre</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>545</x>
+     <y>427</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>494</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoC</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresoApellido</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>511</x>
+     <y>429</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>500</x>
+     <y>195</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoC</sender>
+   <signal>clicked()</signal>
+   <receiver>IngrsoDireccion</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>553</x>
+     <y>434</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>481</x>
+     <y>251</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoC</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresoTelefono</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>546</x>
+     <y>433</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>474</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AceptarInfoC</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresoCiudad</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>560</x>
+     <y>436</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>466</x>
+     <y>379</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

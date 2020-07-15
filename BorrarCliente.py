@@ -41,6 +41,7 @@ class Ui_BorrarCliente(object):
         BorrarCliente.setStatusBar(self.statusbar)
 
         self.retranslateUi(BorrarCliente)
+        self.ConfirmarBorrarC.clicked.connect(self.IngresoID.selectAll)
         QtCore.QMetaObject.connectSlotsByName(BorrarCliente)
 
     def retranslateUi(self, BorrarCliente):

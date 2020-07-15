@@ -77,5 +77,22 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>ConfirmarBorrarS_2</sender>
+   <signal>clicked()</signal>
+   <receiver>IngresoCodigo_2</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>267</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
