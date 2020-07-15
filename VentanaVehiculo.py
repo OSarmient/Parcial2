@@ -82,6 +82,9 @@ class Ui_VentanaVehiculos(object):
         self.IngresarPasajeros = QtWidgets.QTextEdit(self.centralwidget)
         self.IngresarPasajeros.setGeometry(QtCore.QRect(30, 460, 351, 31))
         self.IngresarPasajeros.setObjectName("IngresarPasajeros")
+        self.retranslateUi(VentanaVehiculo)
+        self.CancelarInfoV.clicked.connect(VentanaVehiculo.close)
+        QtCore.QMetaObject.connectSlotsByName(VentanaVehiculo)
         VentanaVehiculo.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(VentanaVehiculo)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 576, 21))
@@ -96,7 +99,7 @@ class Ui_VentanaVehiculos(object):
 
     def retranslateUi(self, VentanaVehiculo):
         _translate = QtCore.QCoreApplication.translate
-        VentanaVehiculo.setWindowTitle(_translate("VentanaVehiculo", "MainWindow"))
+        VentanaVehiculo.setWindowTitle(_translate("VentanaVehiculo", "Vehiculo"))
         self.AceptarInfoV.setText(_translate("VentanaVehiculo", "Aceptar"))
         self.Placa.setText(_translate("VentanaVehiculo", "No. de placa"))
         self.TipoServicio.setText(_translate("VentanaVehiculo", "Tipo que servicio que realiza: publico/particular"))

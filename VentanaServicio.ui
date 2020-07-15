@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>VentanaServicio</class>
+ <widget class="QMainWindow" name="VentanaServicio">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -76,7 +76,7 @@
      <string>Cancelar</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_7">
+   <widget class="QTextEdit" name="IngresarNombre">
     <property name="geometry">
      <rect>
       <x>20</x>

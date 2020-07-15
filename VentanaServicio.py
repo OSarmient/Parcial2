@@ -11,10 +11,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_VentanaServicio(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(468, 361)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self, VentanaServicio):
+        VentanaServicio.setObjectName("VentanaServicio")
+        VentanaServicio.resize(468, 361)
+        self.centralwidget = QtWidgets.QWidget(VentanaServicio)
         self.centralwidget.setObjectName("centralwidget")
         self.IngresarCosto = QtWidgets.QTextEdit(self.centralwidget)
         self.IngresarCosto.setGeometry(QtCore.QRect(20, 160, 351, 31))
@@ -46,24 +46,27 @@ class Ui_VentanaServicio(object):
         self.AceptarInfoS = QtWidgets.QPushButton(self.centralwidget)
         self.AceptarInfoS.setGeometry(QtCore.QRect(290, 290, 75, 23))
         self.AceptarInfoS.setObjectName("AceptarInfoS")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.retranslateUi(VentanaServicio)
+        self.CancelarInfoS.clicked.connect(VentanaServicio.close)
+        QtCore.QMetaObject.connectSlotsByName( VentanaServicio)
+        VentanaServicio.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(VentanaServicio)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 468, 21))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        VentanaServicio.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(VentanaServicio)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        VentanaServicio.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(VentanaServicio)
+        QtCore.QMetaObject.connectSlotsByName(VentanaServicio)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, VentanaServicio):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.CostoXHora.setText(_translate("MainWindow", "Costo por hora del servicio"))
-        self.Horas.setText(_translate("MainWindow", "Horas del servicio"))
-        self.CodigoServicio.setText(_translate("MainWindow", "Codigo del Servicio"))
-        self.CancelarInfoS.setText(_translate("MainWindow", "Cancelar"))
-        self.NombreServicio.setText(_translate("MainWindow", "Nombre del servicio"))
-        self.AceptarInfoS.setText(_translate("MainWindow", "Aceptar"))
+        VentanaServicio.setWindowTitle(_translate("VentanaServicio", "VentanaServicio"))
+        self.CostoXHora.setText(_translate("VentanaServicio", "Costo por hora del servicio"))
+        self.Horas.setText(_translate("VentanaServicio", "Horas del servicio"))
+        self.CodigoServicio.setText(_translate("VentanaServicio", "Codigo del Servicio"))
+        self.CancelarInfoS.setText(_translate("VentanaServicio", "Cancelar"))
+        self.NombreServicio.setText(_translate("VentanaServicio", "Nombre del servicio"))
+        self.AceptarInfoS.setText(_translate("VentanaServicio", "Aceptar"))

@@ -11,10 +11,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_BorrarVehiculo(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(430, 193)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self, BorrarVehiculo):
+        BorrarVehiculo.setObjectName("BorrarVehiculo")
+        BorrarVehiculo.resize(430, 193)
+        self.centralwidget = QtWidgets.QWidget(BorrarVehiculo)
         self.centralwidget.setObjectName("centralwidget")
         self.ConfirmarBorrarV = QtWidgets.QPushButton(self.centralwidget)
         self.ConfirmarBorrarV.setGeometry(QtCore.QRect(230, 110, 75, 23))
@@ -28,21 +28,24 @@ class Ui_BorrarVehiculo(object):
         self.TxtID = QtWidgets.QLabel(self.centralwidget)
         self.TxtID.setGeometry(QtCore.QRect(40, 20, 101, 31))
         self.TxtID.setObjectName("TxtID")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.retranslateUi(BorrarVehiculo)
+        self.CancelarBorrarV.clicked.connect(BorrarVehiculo.close)
+        QtCore.QMetaObject.connectSlotsByName(BorrarVehiculo)
+        BorrarVehiculo.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(BorrarVehiculo)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 430, 21))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        BorrarVehiculo.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(BorrarVehiculo)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        BorrarVehiculo.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(BorrarVehiculo)
+        QtCore.QMetaObject.connectSlotsByName(BorrarVehiculo)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, BorrarVehiculo):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.ConfirmarBorrarV.setText(_translate("MainWindow", "Borrar"))
-        self.CancelarBorrarV.setText(_translate("MainWindow", "Cancelar"))
-        self.TxtID.setText(_translate("MainWindow", "No. de identificacion"))
+        BorrarVehiculo.setWindowTitle(_translate("BorrarVehiculo", "BorrarVehiculo"))
+        self.ConfirmarBorrarV.setText(_translate("BorrarVehiculo", "Borrar"))
+        self.CancelarBorrarV.setText(_translate("BorrarVehiculo", "Cancelar"))
+        self.TxtID.setText(_translate("BorrarVehiculo", "No. de identificacion"))

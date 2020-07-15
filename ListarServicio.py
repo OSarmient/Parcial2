@@ -11,10 +11,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_ListarServicio(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(604, 498)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self, ListarServicio):
+        ListarServicio.setObjectName("ListarServicio")
+        ListarServicio.resize(604, 498)
+        self.centralwidget = QtWidgets.QWidget(ListarServicio)
         self.centralwidget.setObjectName("centralwidget")
         self.direccion = QtWidgets.QPushButton(self.centralwidget)
         self.direccion.setGeometry(QtCore.QRect(490, 190, 101, 23))
@@ -45,24 +45,27 @@ class Ui_ListarServicio(object):
         self.CerrarLista = QtWidgets.QPushButton(self.centralwidget)
         self.CerrarLista.setGeometry(QtCore.QRect(500, 440, 75, 23))
         self.CerrarLista.setObjectName("CerrarLista")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.retranslateUi(ListarServicio)
+        self.CerrarLista.clicked.connect(ListarServicio.close)
+        QtCore.QMetaObject.connectSlotsByName(ListarServicio)
+        ListarServicio.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(ListarServicio)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 604, 21))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        ListarServicio.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(ListarServicio)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        ListarServicio.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(ListarServicio)
+        QtCore.QMetaObject.connectSlotsByName(ListarServicio)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, ListarServicio):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.direccion.setText(_translate("MainWindow", "Horas del servicio"))
-        self.NoCodigo.setText(_translate("MainWindow", "Codigo de servicio"))
-        self.DatosCliente.setText(_translate("MainWindow", "Ordenar Datos:"))
-        self.Costo.setText(_translate("MainWindow", "Costo por hora"))
-        self.NombreServicio.setText(_translate("MainWindow", "Nombre se servicio"))
-        self.CerrarLista.setText(_translate("MainWindow", "Cerrar"))
+        ListarServicio.setWindowTitle(_translate("ListarServicio", "ListarServicio"))
+        self.direccion.setText(_translate("ListarServicio", "Horas del servicio"))
+        self.NoCodigo.setText(_translate("ListarServicio", "Codigo de servicio"))
+        self.DatosCliente.setText(_translate("ListarServicio", "Ordenar Datos:"))
+        self.Costo.setText(_translate("ListarServicio", "Costo por hora"))
+        self.NombreServicio.setText(_translate("ListarServicio", "Nombre se servicio"))
+        self.CerrarLista.setText(_translate("ListarServicio", "Cerrar"))

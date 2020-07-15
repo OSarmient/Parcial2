@@ -58,6 +58,9 @@ class Ui_VentanaCliente(object):
         self.CancelarInfoC = QtWidgets.QPushButton(self.centralwidget)
         self.CancelarInfoC.setGeometry(QtCore.QRect(590, 400, 75, 23))
         self.CancelarInfoC.setObjectName("CancelarInfoC")
+        self.retranslateUi(VentanaCliente)
+        self.CancelarInfoC.clicked.connect(VentanaCliente.close)
+        QtCore.QMetaObject.connectSlotsByName(VentanaCliente)
         VentanaCliente.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(VentanaCliente)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 686, 21))
@@ -72,7 +75,7 @@ class Ui_VentanaCliente(object):
 
     def retranslateUi(self, VentanaCliente):
         _translate = QtCore.QCoreApplication.translate
-        VentanaCliente.setWindowTitle(_translate("VentanaCliente", "MainWindow"))
+        VentanaCliente.setWindowTitle(_translate("VentanaCliente", "Cliente"))
         self.TxtNombre.setText(_translate("VentanaCliente", "Nombre"))
         self.TxtApellido.setText(_translate("VentanaCliente", "Apellido"))
         self.TxtID.setText(_translate("VentanaCliente", "No de identificacion"))

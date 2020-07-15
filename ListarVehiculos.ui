@@ -27,7 +27,7 @@
      <string>Combustible</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="Motor">
     <property name="geometry">
      <rect>
       <x>500</x>
