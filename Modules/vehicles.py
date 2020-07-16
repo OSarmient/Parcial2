@@ -7,7 +7,7 @@ class Vehicles(ModuleBase):
         self.singularity = "vehiculo"
         self.singular = "El vehiculo"
         self.flush_singular = "un vehiculo"
-        self.plural = "vehiculos"
+        self.plural = "Vehiculos"
         self.menu_options = [{
             "display": "Custom menu action",
             "function": self.exit
