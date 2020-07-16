@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from clients import Clients
 
 class Ui_ListarCliente(object):
     def setupUi(self, ListarCliente):
@@ -26,8 +26,8 @@ class Ui_ListarCliente(object):
         self.tableWidget = QtWidgets.QTableWidget(self.scrollAreaWidgetContents)
         self.tableWidget.setGeometry(QtCore.QRect(0, 0, 461, 401))
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(6)
-        self.tableWidget.setRowCount(0)
+        self.tableWidget.setColumnCount(8)
+        self.tableWidget.setRowCount(5)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -40,6 +40,10 @@ class Ui_ListarCliente(object):
         self.tableWidget.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(7, item)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.DatosCliente = QtWidgets.QLabel(self.centralwidget)
         self.DatosCliente.setGeometry(QtCore.QRect(500, 10, 111, 51))
@@ -78,6 +82,7 @@ class Ui_ListarCliente(object):
         ListarCliente.setStatusBar(self.statusbar)
 
         self.retranslateUi(ListarCliente)
+        self.No_ID.clicked.connect(self.get_clients)
         QtCore.QMetaObject.connectSlotsByName(ListarCliente)
 
     def retranslateUi(self, ListarCliente):
@@ -95,6 +100,10 @@ class Ui_ListarCliente(object):
         item.setText(_translate("ListarCliente", "Teléfono"))
         item = self.tableWidget.horizontalHeaderItem(5)
         item.setText(_translate("ListarCliente", "Ciudad"))
+        item = self.tableWidget.horizontalHeaderItem(6)
+        item.setText(_translate("ListarCliente", "uid"))
+        item = self.tableWidget.horizontalHeaderItem(7)
+        item.setText(_translate("ListarCliente", "Random"))
         self.DatosCliente.setText(_translate("ListarCliente", "Ordenar Datos:"))
         self.No_ID.setText(_translate("ListarCliente", "No de ID"))
         self.Nombre.setText(_translate("ListarCliente", "Nombre"))
@@ -103,3 +112,16 @@ class Ui_ListarCliente(object):
         self.Telefono.setText(_translate("ListarCliente", "Telefono"))
         self.Ciudad.setText(_translate("ListarCliente", "Ciudad"))
         self.CerrarLista.setText(_translate("ListarCliente", "Cerrar"))
+
+    def get_clients(self, ListarCliente):
+        clients=Clients()
+        data =clients.get_all()
+        row = 0
+        for i in data:
+            col = 0
+            keys = i.keys()
+            for j in keys:
+                item = QtWidgets.QTableWidgetItem(str(i[j]))
+                self.tableWidget.setItem(row, col, item)
+                col+=1
+            row +=1
