@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from clients import Clients
 
 class Ui_VentanaCliente(object):
     def setupUi(self, VentanaCliente):
@@ -71,12 +71,8 @@ class Ui_VentanaCliente(object):
         VentanaCliente.setStatusBar(self.statusbar)
 
         self.retranslateUi(VentanaCliente)
-        self.AceptarInfoC.clicked.connect(self.IngresoID_C.selectAll)
-        self.AceptarInfoC.clicked.connect(self.IngresoNombre.selectAll)
-        self.AceptarInfoC.clicked.connect(self.IngresoApellido.selectAll)
-        self.AceptarInfoC.clicked.connect(self.IngrsoDireccion.selectAll)
-        self.AceptarInfoC.clicked.connect(self.IngresoTelefono.selectAll)
-        self.AceptarInfoC.clicked.connect(self.IngresoCiudad.selectAll)
+        self.AceptarInfoC.clicked.connect(self.insert1)
+        self.AceptarInfoC.clicked.connect(VentanaCliente.close)
         QtCore.QMetaObject.connectSlotsByName(VentanaCliente)
 
     def retranslateUi(self, VentanaCliente):
@@ -90,3 +86,14 @@ class Ui_VentanaCliente(object):
         self.TxtCiudad.setText(_translate("VentanaCliente", "Ciudad"))
         self.AceptarInfoC.setText(_translate("VentanaCliente", "Aceptar"))
         self.CancelarInfoC.setText(_translate("VentanaCliente", "Cancelar"))
+
+    def insert1(self, VentanaCliente):
+        data = []
+        data.append(self.IngresoID_C.toPlainText())
+        data.append(self.IngresoNombre.toPlainText())
+        data.append(self.IngresoApellido.toPlainText())
+        data.append(self.IngrsoDireccion.toPlainText())
+        data.append(self.IngresoTelefono.toPlainText())
+        data.append(self.IngresoCiudad.toPlainText())
+        clients = Clients()
+        clients.insert2(data)
