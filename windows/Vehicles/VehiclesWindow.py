@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, QtCore
 
 from Modules.vehicles import Vehicles
 from windows.Base.Delete import Ui_Delete
-from windows.Vehicles.VentanaVehiculo import Ui_VentanaVehiculos
+from windows.Base.Create import Ui_Create
 from windows.Base.List import Ui_List
 
 class VehiclesWindow:
@@ -13,7 +13,7 @@ class VehiclesWindow:
         self.uis = {
             "list": Ui_List(),
             "delete": Ui_Delete(),
-            "create": Ui_VentanaVehiculos(),
+            "create": Ui_Create(),
         }
 
         self.delete_props = {
@@ -26,7 +26,7 @@ class VehiclesWindow:
         self.windows = {}
         self.create_windows()
 
-        ui.BotonCrearV.clicked.connect(self.show_list)
+        ui.BotonCrearV.clicked.connect(self.show_create)
         ui.BotonBorrarV.clicked.connect(self.show_delete)
         ui.BotonListarV.clicked.connect(self.show_list)
 
@@ -79,3 +79,6 @@ class VehiclesWindow:
     
     def close_delete(self):
         self.windows["delete"].close()
+
+    def show_create(self):
+        self.windows["create"].show()   
