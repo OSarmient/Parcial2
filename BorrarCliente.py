@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from clients import Clients
 
 class Ui_BorrarCliente(object):
     def setupUi(self, BorrarCliente):
@@ -41,7 +41,7 @@ class Ui_BorrarCliente(object):
         BorrarCliente.setStatusBar(self.statusbar)
 
         self.retranslateUi(BorrarCliente)
-        self.ConfirmarBorrarC.clicked.connect(self.IngresoID.selectAll)
+        self.ConfirmarBorrarC.clicked.connect(self.erase)
         QtCore.QMetaObject.connectSlotsByName(BorrarCliente)
 
     def retranslateUi(self, BorrarCliente):
@@ -50,3 +50,8 @@ class Ui_BorrarCliente(object):
         self.TxtID.setText(_translate("BorrarCliente", "No. de identificacion"))
         self.CancelarBorrarC.setText(_translate("BorrarCliente", "Cancelar"))
         self.ConfirmarBorrarC.setText(_translate("BorrarCliente", "Borrar"))
+
+    def erase(self, VentanaCliente):
+        data = self.IngresoID.toPlainText()
+        clients = Clients()
+        clients.delete(data,property="No ID")
