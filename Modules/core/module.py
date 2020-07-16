@@ -81,11 +81,9 @@ class ModuleBase:
             else:
                 order_bucle = False
 
-    def delete(self, dato, property):
-        Num = dato
-        self.database.delete_by_property(property, Num)
+    def delete(self, dato, property = "uid"):
+       return self.database.delete_by_property(property, dato)
         
-    
     def delete_by_uid(self):
         delete_bucle = True
 

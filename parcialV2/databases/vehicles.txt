@@ -1,1 +1,0 @@
-{'placa': 'ASD258', 'marca': 'Ferrari', 'modelo': 'La Ferrari', 'cilindrada': 8888, 'color': 'ROjo', 'tipo': 'Deportivo', 'combustible': 'Extra', 'pasajeros': 2, 'chasis': 222, 'motor': 222, 'uid': 1, 'random': 84}

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Delete</class>
+ <widget class="QMainWindow" name="Delete">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>430</width>
-    <height>193</height>
+    <width>401</width>
+    <height>175</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Delete</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="ConfirmarBorrarV">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>110</y>
+      <x>20</x>
+      <y>120</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -27,21 +27,21 @@
      <string>Borrar</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="IngresoPlaca">
+   <widget class="QTextEdit" name="UniqueProp">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>60</y>
+      <x>20</x>
+      <y>90</y>
       <width>351</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="CancelarBorrarV">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>110</y>
+      <x>100</x>
+      <y>120</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -53,26 +53,34 @@
    <widget class="QLabel" name="TxtID">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>20</y>
-      <width>101</width>
+      <x>20</x>
+      <y>60</y>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>No. de identificacion</string>
+     <string>Propiedad unica</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>430</width>
-     <height>21</height>
-    </rect>
-   </property>
+   <widget class="QLabel" name="Title">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Delete action</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
@@ -81,7 +89,7 @@
   <connection>
    <sender>ConfirmarBorrarV</sender>
    <signal>clicked()</signal>
-   <receiver>IngresoPlaca</receiver>
+   <receiver>UniqueProp</receiver>
    <slot>selectAll()</slot>
    <hints>
     <hint type="sourcelabel">

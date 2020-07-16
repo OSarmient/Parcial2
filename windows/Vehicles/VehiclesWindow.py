@@ -1,9 +1,9 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 
-from parcialV2.vehicles import Vehicles
-from windows.Vehicles.BorrarVehiculo import Ui_BorrarVehiculo
+from Modules.vehicles import Vehicles
+from windows.Base.Delete import Ui_Delete
 from windows.Vehicles.VentanaVehiculo import Ui_VentanaVehiculos
-from windows.Vehicles.ListarVehiculos import Ui_ListarVehiculos
+from windows.Base.List import Ui_List
 
 class VehiclesWindow:
     def __init__(self, ui):
@@ -11,9 +11,14 @@ class VehiclesWindow:
         self.vehicles = Vehicles()
 
         self.uis = {
-            "list": Ui_ListarVehiculos(),
-            "delete": Ui_BorrarVehiculo(),
+            "list": Ui_List(),
+            "delete": Ui_Delete(),
             "create": Ui_VentanaVehiculos(),
+        }
+
+        self.delete_props = {
+            "title": "Eliminar " + self.vehicles.singularity,
+            "prop": "Digite el numero de la placa",
         }
 
         self.table_header = []
@@ -22,7 +27,7 @@ class VehiclesWindow:
         self.create_windows()
 
         ui.BotonCrearV.clicked.connect(self.show_list)
-        ui.BotonBorrarV.clicked.connect(self.show_list)
+        ui.BotonBorrarV.clicked.connect(self.show_delete)
         ui.BotonListarV.clicked.connect(self.show_list)
 
     def set_table_data(self):
@@ -49,7 +54,6 @@ class VehiclesWindow:
             self.uis["list"].tableWidget.resizeColumnsToContents()
             self.uis["list"].tableWidget.resizeRowsToContents()
 
-
     def create_windows(self):
         for key in self.uis:
             self.windows[key] = QtWidgets.QMainWindow()
@@ -58,3 +62,20 @@ class VehiclesWindow:
     def show_list(self):
         self.set_table_data()
         self.windows["list"].show()
+
+    def show_delete(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.uis["delete"].Title.setText(_translate("Delete", self.delete_props["title"] ))
+        self.uis["delete"].TxtID.setText(_translate("Delete", self.delete_props["prop"]))
+        self.uis["delete"].ConfirmarBorrarV.clicked.connect(self.delete)
+        self.uis["delete"].CancelarBorrarV.clicked.connect(self.close_delete)
+        self.windows["delete"].show()
+
+    def delete(self):
+        delete = self.vehicles.delete(self.uis["delete"].UniqueProp.toPlainText(), "placa")
+
+        if delete == False: print("No existe u vehiculo con esta placa")
+        else: print("Vehiculo eliminado")   
+    
+    def close_delete(self):
+        self.windows["delete"].close()
