@@ -54,4 +54,4 @@ class Ui_BorrarCliente(object):
     def erase(self, VentanaCliente):
         data = self.IngresoID.toPlainText()
         clients = Clients()
-        clients.delete(data,property="No ID")
+        clients.delete(data, property="No ID")

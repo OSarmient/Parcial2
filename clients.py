@@ -1,4 +1,4 @@
-from parcialV2.core.module import ModuleBase
+from core.module import ModuleBase
 
 
 class Clients(ModuleBase):

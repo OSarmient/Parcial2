@@ -27,7 +27,7 @@ class Ui_ListarCliente(object):
         self.tableWidget.setGeometry(QtCore.QRect(0, 0, 461, 401))
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(8)
-        self.tableWidget.setRowCount(5)
+        self.tableWidget.setRowCount(100)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -87,7 +87,7 @@ class Ui_ListarCliente(object):
 
     def retranslateUi(self, ListarCliente):
         _translate = QtCore.QCoreApplication.translate
-        ListarCliente.setWindowTitle(_translate("ListarCliente", "MainWindow"))
+        ListarCliente.setWindowTitle(_translate("ListarCliente", "ListarCliente"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("ListarCliente", "ID"))
         item = self.tableWidget.horizontalHeaderItem(1)

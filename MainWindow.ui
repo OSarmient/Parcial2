@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>719</width>
-    <height>567</height>
+    <height>562</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -255,6 +255,11 @@
     </column>
     <column>
      <property name="text">
+      <string>Random</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
       <string>Placa</string>
      </property>
     </column>
@@ -266,11 +271,6 @@
     <column>
      <property name="text">
       <string>Modelo</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>New Column</string>
      </property>
     </column>
     <column>
@@ -290,6 +290,11 @@
     </column>
     <column>
      <property name="text">
+      <string>Combustible</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
       <string>No. Pasajeros</string>
      </property>
     </column>
@@ -300,7 +305,7 @@
     </column>
     <column>
      <property name="text">
-      <string>New Column</string>
+      <string>No.Motor</string>
      </property>
     </column>
     <column>
