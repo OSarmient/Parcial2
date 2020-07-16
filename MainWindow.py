@@ -8,24 +8,13 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import sqlite3
-
+from bills import Facturas
+    
 
 class Ui_MainWindow(object):
-    
-    #def loadData(self):
-    #    connection = sqlite3.connect('facturas.txt')
-    #    #query = 'Select * from nombre'
-    #    result = Clients.get_all()
-    #    self.tableWidget.setRowCount(0)
-    #    for row_number, row_data in enumerate(result):
-    #        self.tableWidget.insertRow(row_number)
-    #        for column_number, data in enumerate(row_data):
-    #            self.tableWidget.setItem(row_number,column_number, QtWidgets.QTableWidgetItem(str(data)))
-                
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(719, 567)
+        MainWindow.resize(719, 562)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.toolBox = QtWidgets.QToolBox(self.centralwidget)
@@ -79,8 +68,8 @@ class Ui_MainWindow(object):
         self.TablaFacturas = QtWidgets.QTableWidget(self.centralwidget)
         self.TablaFacturas.setGeometry(QtCore.QRect(35, 220, 661, 301))
         self.TablaFacturas.setObjectName("TablaFacturas")
-        self.TablaFacturas.setColumnCount(21)
-        self.TablaFacturas.setRowCount(0)
+        self.TablaFacturas.setColumnCount(22)
+        self.TablaFacturas.setRowCount(100)
         item = QtWidgets.QTableWidgetItem()
         self.TablaFacturas.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -123,13 +112,11 @@ class Ui_MainWindow(object):
         self.TablaFacturas.setHorizontalHeaderItem(19, item)
         item = QtWidgets.QTableWidgetItem()
         self.TablaFacturas.setHorizontalHeaderItem(20, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.TablaFacturas.setHorizontalHeaderItem(21, item)
         self.CrearFactura = QtWidgets.QPushButton(self.centralwidget)
         self.CrearFactura.setGeometry(QtCore.QRect(500, 180, 121, 23))
         self.CrearFactura.setObjectName("CrearFactura")
-        self.CargarFacturas = QtWidgets.QPushButton(self.centralwidget)
-        self.CargarFacturas.setGeometry(QtCore.QRect(344, 120, 111, 23))
-        self.CargarFacturas.setObjectName("CargarFacturas")
-        #self.CargarFacturas.clicked.connect(self.loadData)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 719, 21))
@@ -141,6 +128,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.toolBox.setCurrentIndex(0)
+        self.MostarFactura.clicked.connect(self.get_factura)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -175,13 +163,13 @@ class Ui_MainWindow(object):
         item = self.TablaFacturas.horizontalHeaderItem(6)
         item.setText(_translate("MainWindow", "Ciudad"))
         item = self.TablaFacturas.horizontalHeaderItem(7)
-        item.setText(_translate("MainWindow", "Placa"))
+        item.setText(_translate("MainWindow", "Random"))
         item = self.TablaFacturas.horizontalHeaderItem(8)
-        item.setText(_translate("MainWindow", "Marca"))
+        item.setText(_translate("MainWindow", "Placa"))
         item = self.TablaFacturas.horizontalHeaderItem(9)
-        item.setText(_translate("MainWindow", "Modelo"))
+        item.setText(_translate("MainWindow", "Marca"))
         item = self.TablaFacturas.horizontalHeaderItem(10)
-        item.setText(_translate("MainWindow", "New Column"))
+        item.setText(_translate("MainWindow", "Modelo"))
         item = self.TablaFacturas.horizontalHeaderItem(11)
         item.setText(_translate("MainWindow", "Cilindrada"))
         item = self.TablaFacturas.horizontalHeaderItem(12)
@@ -189,19 +177,32 @@ class Ui_MainWindow(object):
         item = self.TablaFacturas.horizontalHeaderItem(13)
         item.setText(_translate("MainWindow", "Tipo de uso"))
         item = self.TablaFacturas.horizontalHeaderItem(14)
-        item.setText(_translate("MainWindow", "No. Pasajeros"))
+        item.setText(_translate("MainWindow", "Combustible"))
         item = self.TablaFacturas.horizontalHeaderItem(15)
-        item.setText(_translate("MainWindow", "No.Chasis"))
+        item.setText(_translate("MainWindow", "No. Pasajeros"))
         item = self.TablaFacturas.horizontalHeaderItem(16)
-        item.setText(_translate("MainWindow", "New Column"))
+        item.setText(_translate("MainWindow", "No.Chasis"))
         item = self.TablaFacturas.horizontalHeaderItem(17)
-        item.setText(_translate("MainWindow", "Codigo Servicio"))
+        item.setText(_translate("MainWindow", "No.Motor"))
         item = self.TablaFacturas.horizontalHeaderItem(18)
-        item.setText(_translate("MainWindow", "Precio por Hora"))
+        item.setText(_translate("MainWindow", "Codigo Servicio"))
         item = self.TablaFacturas.horizontalHeaderItem(19)
-        item.setText(_translate("MainWindow", "Tiempo"))
+        item.setText(_translate("MainWindow", "Precio por Hora"))
         item = self.TablaFacturas.horizontalHeaderItem(20)
+        item.setText(_translate("MainWindow", "Tiempo"))
+        item = self.TablaFacturas.horizontalHeaderItem(21)
         item.setText(_translate("MainWindow", "Total"))
         self.CrearFactura.setText(_translate("MainWindow", "Crear Factura"))
-        self.CargarFacturas.setText(_translate("MainWindow", "Cargar Facturas"))
 
+    def get_factura(self, MainWindow):
+        factura=Facturas()
+        data =factura.get_all()
+        row = 0
+        for i in data:
+            col = 0
+            keys = i.keys()
+            for j in keys:
+                item = QtWidgets.QTableWidgetItem(str(i[j]))
+                self.TablaFacturas.setItem(row, col, item)
+                col+=1
+            row +=1

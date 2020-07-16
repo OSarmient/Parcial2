@@ -8,6 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from service import Service
 
 
 class Ui_VentanaServicio(object):
@@ -59,6 +60,11 @@ class Ui_VentanaServicio(object):
         VentanaServicio.setStatusBar(self.statusbar)
 
         self.retranslateUi(VentanaServicio)
+        self.AceptarInfoS.clicked.connect(self.insert1)
+        self.AceptarInfoS.clicked.connect(VentanaServicio.close)
+        QtCore.QMetaObject.connectSlotsByName(VentanaServicio)
+
+        self.retranslateUi(VentanaServicio)
         self.AceptarInfoS.clicked.connect(self.IngresarCodigo.selectAll)
         self.AceptarInfoS.clicked.connect(self.IngresarNombre.selectAll)
         self.AceptarInfoS.clicked.connect(self.IngresarCosto.selectAll)
@@ -74,3 +80,12 @@ class Ui_VentanaServicio(object):
         self.CancelarInfoS.setText(_translate("VentanaServicio", "Cancelar"))
         self.NombreServicio.setText(_translate("VentanaServicio", "Nombre del servicio"))
         self.AceptarInfoS.setText(_translate("VentanaServicio", "Aceptar"))
+
+    def insert1(self, VentanaServicio):
+        data = []
+        data.append(self.IngresarCodigo.toPlainText())
+        data.append(self.IngresarNombre.toPlainText())
+        data.append(self.IngresarCosto.toPlainText())
+        data.append(self.IngresarHoras.toPlainText())
+        service = Service()
+        service.insert2(data)

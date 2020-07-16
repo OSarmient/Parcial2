@@ -8,6 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from service import Service
 
 
 class Ui_ListarServicio(object):
@@ -44,8 +45,8 @@ class Ui_ListarServicio(object):
         self.tableWidget = QtWidgets.QTableWidget(self.scrollAreaWidgetContents)
         self.tableWidget.setGeometry(QtCore.QRect(0, 0, 461, 401))
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(4)
-        self.tableWidget.setRowCount(0)
+        self.tableWidget.setColumnCount(6)
+        self.tableWidget.setRowCount(100)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -54,6 +55,10 @@ class Ui_ListarServicio(object):
         self.tableWidget.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(5, item)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.retranslateUi(ListarServicio)
         self.CerrarLista.clicked.connect(ListarServicio.close)
@@ -68,11 +73,12 @@ class Ui_ListarServicio(object):
         ListarServicio.setStatusBar(self.statusbar)
 
         self.retranslateUi(ListarServicio)
+        self.NoCodigo.clicked.connect(self.get_service)
         QtCore.QMetaObject.connectSlotsByName(ListarServicio)
 
     def retranslateUi(self, ListarServicio):
         _translate = QtCore.QCoreApplication.translate
-        ListarServicio.setWindowTitle(_translate("ListarServicio", "ListarServicio"))
+        ListarServicio.setWindowTitle(_translate("ListarServicio", "MainWindow"))
         self.direccion.setText(_translate("ListarServicio", "Horas del servicio"))
         self.NoCodigo.setText(_translate("ListarServicio", "Codigo de servicio"))
         self.DatosCliente.setText(_translate("ListarServicio", "Ordenar Datos:"))
@@ -87,3 +93,20 @@ class Ui_ListarServicio(object):
         item.setText(_translate("ListarServicio", "Costo"))
         item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("ListarServicio", "Tiempo (Horas)"))
+        item = self.tableWidget.horizontalHeaderItem(4)
+        item.setText(_translate("ListarServicio", "Uid"))
+        item = self.tableWidget.horizontalHeaderItem(5)
+        item.setText(_translate("ListarServicio", "Random"))
+
+    def get_service(self, ListarServicio):
+        service=Service()
+        data =service.get_all()
+        row = 0
+        for i in data:
+            col = 0
+            keys = i.keys()
+            for j in keys:
+                item = QtWidgets.QTableWidgetItem(str(i[j]))
+                self.tableWidget.setItem(row, col, item)
+                col+=1
+            row +=1

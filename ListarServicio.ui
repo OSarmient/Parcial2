@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>ListarServicio</class>
+ <widget class="QMainWindow" name="ListarServicio">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -140,6 +140,16 @@
       <column>
        <property name="text">
         <string>Tiempo (Horas)</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Uid</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Random</string>
        </property>
       </column>
      </widget>
