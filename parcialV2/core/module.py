@@ -50,7 +50,6 @@ class ModuleBase:
             print("------------")
 
     def get_all(self):
-        clean_console()
         data = self.database.get_data_in_database()
         self.print_data(data)
 
@@ -58,7 +57,6 @@ class ModuleBase:
         self.database.save_in_database(data)
 
     def order_by(self):
-        clean_console()
         order_bucle = True
 
         while order_bucle:
@@ -85,7 +83,6 @@ class ModuleBase:
                 order_bucle = False
 
     def delete_by_uid(self):
-        clean_console()
         delete_bucle = True
 
         while delete_bucle:
@@ -111,7 +108,6 @@ class ModuleBase:
         self.database.clean()
 
     def print_menu(self):
-        clean_console()
         print()
         print("-- " + str(self.database_name) + " Menu --")
         print()
@@ -139,9 +135,15 @@ class ModuleBase:
             error = True
 
         return error
-
+    
+    def insert2(self, dato):
+        data = {}
+        for i in range(len(dato)):
+            self.properties[i]["value"] = dato[i]
+            data[self.properties[i]["data"]] = self.properties[i]["value"]
+        self.save(data)
+        
     def insert(self):
-        clean_console()
         data = {}
 
         for i in self.properties:
