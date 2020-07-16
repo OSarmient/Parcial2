@@ -81,6 +81,9 @@ class ModuleBase:
             else:
                 order_bucle = False
 
+    def get_ordered_by(self, property):
+        return self.database.get_orber_by_property(property)
+
     def delete(self, dato, property = "uid"):
        return self.database.delete_by_property(property, dato)
         

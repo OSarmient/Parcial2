@@ -10,7 +10,7 @@ from ListarCliente import Ui_ListarCliente
 from ListarServicio import Ui_ListarServicio
 from BuscarFactura import Ui_BuscarFactura """
 
-from windows.Vehicles.VehiclesWindow import VehiclesWindow
+from windows.VehiclesWindow import VehiclesWindow
 from PyQt5.uic import loadUi
 import sys
 

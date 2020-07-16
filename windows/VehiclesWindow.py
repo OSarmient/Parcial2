@@ -30,22 +30,26 @@ class VehiclesWindow:
         ui.BotonBorrarV.clicked.connect(self.show_delete)
         ui.BotonListarV.clicked.connect(self.show_list)
 
-    def set_table_data(self):
+    def set_table_data(self, order = ""):
         if len(self.vehicles.get_all()) > 0:
 
-            all_vehicles = self.vehicles.get_all()
+            all_vehicles = []
+            
+            if order == "": all_vehicles = self.vehicles.get_all()
+            else: all_vehicles = self.vehicles.get_ordered_by(order)
 
-            ## set header
+            validate_header = []
 
             for i in all_vehicles[0]:
-                self.table_header.append(i.title())
+                validate_header.append(i.title()) 
 
-            self.uis["list"].tableWidget.setColumnCount(len(self.table_header))
-            self.uis["list"].tableWidget.setHorizontalHeaderLabels(self.table_header)
+            if validate_header != self.table_header:
+                self.table_header = validate_header
+                self.uis["list"].tableWidget.setColumnCount(len(self.table_header))
+                self.uis["list"].tableWidget.setHorizontalHeaderLabels(self.table_header)
+
             self.uis["list"].tableWidget.setRowCount(len(all_vehicles))
 
-            ## set and format data
-            
             for i in range(0, len(all_vehicles)):
                 for j in range(0, len(self.table_header)):
                     data = QtWidgets.QTableWidgetItem(str(all_vehicles[i][self.table_header[j].lower()]))
@@ -59,8 +63,27 @@ class VehiclesWindow:
             self.windows[key] = QtWidgets.QMainWindow()
             self.uis[key].setupUi(self.windows[key])
 
+    def set_combox_box_data(self):
+        combo_box_data = list(self.table_header)
+        combo_box_data.insert(0, " - Ninguno - ")
+        self.uis["list"].comboBox.addItems(combo_box_data)
+        self.uis["list"].comboBox.currentIndexChanged.connect(self.order_data)
+
+    def order_data(self):
+        order_value_index = self.uis["list"].comboBox.currentIndex()
+        order_value_text = self.uis["list"].comboBox.currentText()
+        if order_value_index == 0: self.set_table_data()
+        else: self.set_table_data(order_value_text.lower())
+
     def show_list(self):
+        _translate = QtCore.QCoreApplication.translate
+
         self.set_table_data()
+        self.set_combox_box_data()
+
+        if self.vehicles.plural: self.uis["list"].label.setText(_translate("List", self.vehicles.plural))
+        else: self.uis["list"].label.setText(_translate("List", self.vehicles.database_name))
+
         self.windows["list"].show()
 
     def show_delete(self):
