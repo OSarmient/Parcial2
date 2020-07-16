@@ -50,8 +50,7 @@ class ModuleBase:
             print("------------")
 
     def get_all(self):
-        data = self.database.get_data_in_database()
-        self.print_data(data)
+        return self.database.get_data_in_database()
 
     def save(self, data):
         self.database.save_in_database(data)

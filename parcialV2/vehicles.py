@@ -1,4 +1,4 @@
-from core.module import ModuleBase
+from .core. module import ModuleBase
 
 
 class Vehicles(ModuleBase):
