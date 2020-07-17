@@ -135,5 +135,6 @@ class VehiclesWindow:
 
         self.uis["create"].scrollArea.setLayout(complete_box_layout)
         self.uis["create"].AceptarInfoV.clicked.connect(self.create)
+        self.uis["create"].AceptarInfoV.clicked.connect(self.close_create)
         self.uis["create"].CancelarInfoV.clicked.connect(self.close_create)
         self.windows["create"].show()   
