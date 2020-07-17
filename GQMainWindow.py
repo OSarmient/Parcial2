@@ -1,16 +1,16 @@
 from PyQt5 import QtWidgets
 from MainWindow import Ui_MainWindow
-""" from VentanaCliente import Ui_VentanaCliente
 from VentanaCliente import Ui_VentanaCliente
+from VentanaVehiculo import Ui_VentanaVehiculos
 from VentanaServicio import Ui_VentanaServicio
 from VentanaFactura import Ui_VentanaFactura
 from BorrarCliente import Ui_BorrarCliente
+from BorrarVehiculo import Ui_BorrarVehiculo
 from BorrarServicio import Ui_BorrarServicio
 from ListarCliente import Ui_ListarCliente
+from ListarVehiculos import Ui_ListarVehiculos
 from ListarServicio import Ui_ListarServicio
-from BuscarFactura import Ui_BuscarFactura """
-
-from windows.VehiclesWindow import VehiclesWindow
+from BuscarFactura import Ui_BuscarFactura
 from PyQt5.uic import loadUi
 import sys
 
@@ -19,8 +19,6 @@ class Window(QtWidgets.QMainWindow):
         super(Window, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
-        """ self.ui.BotonCrearC.clicked.connect(self.abrirCreacionC)
         self.ui.BotonCrearC.clicked.connect(self.abrirCreacionC)
         self.ui.BotonBorrarC.clicked.connect(self.abrirBorrarC)
         self.ui.BotonListarC.clicked.connect(self.abrirListaC)
@@ -31,12 +29,9 @@ class Window(QtWidgets.QMainWindow):
         self.ui.BotonBorrarS.clicked.connect(self.abrirBorrarS)
         self.ui.BotonListarS.clicked.connect(self.abrirListaS)
         self.ui.BuscarFactura.clicked.connect(self.buscarFactura)
-        self.ui.CrearFactura.clicked.connect(self.crearF) """
+        self.ui.CrearFactura.clicked.connect(self.crearF)
 
-        # vehicles
-        self.vehicles = VehiclesWindow(self.ui)
-
-    """def abrirCreacionC(self):
+    def abrirCreacionC(self):
         self.crear = QtWidgets.QMainWindow()
         self.ui = Ui_VentanaCliente()
         self.ui.setupUi(self.crear)
@@ -102,9 +97,8 @@ class Window(QtWidgets.QMainWindow):
         self.crear.show()
     
     def Cancelar(self):
-        self.close() """
-
-
+        self.close()
+    
 
 app = QtWidgets.QApplication([])
 application = Window()

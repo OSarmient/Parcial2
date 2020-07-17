@@ -42,6 +42,7 @@ class Ui_BorrarCliente(object):
 
         self.retranslateUi(BorrarCliente)
         self.ConfirmarBorrarC.clicked.connect(self.erase)
+        self.ConfirmarBorrarC.clicked.connect(BorrarCliente.close)
         QtCore.QMetaObject.connectSlotsByName(BorrarCliente)
 
     def retranslateUi(self, BorrarCliente):

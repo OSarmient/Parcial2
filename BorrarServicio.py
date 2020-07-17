@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from service import Service
 
 class Ui_BorrarServicio(object):
     def setupUi(self, BorrarServicio):
@@ -42,6 +42,8 @@ class Ui_BorrarServicio(object):
 
         self.retranslateUi(BorrarServicio)
         self.ConfirmarBorrarS_2.clicked.connect(self.IngresoCodigo_2.selectAll)
+        self.ConfirmarBorrarS_2.clicked.connect(self.erase)
+        self.ConfirmarBorrarS_2.clicked.connect(BorrarServicio.close)
         QtCore.QMetaObject.connectSlotsByName(BorrarServicio)
 
     def retranslateUi(self, BorrarServicio):
@@ -50,3 +52,8 @@ class Ui_BorrarServicio(object):
         self.CancelarBorrarS_2.setText(_translate("BorrarServicio", "Cancelar"))
         self.ConfirmarBorrarS_2.setText(_translate("BorrarServicio", "Borrar"))
         self.TxtID_2.setText(_translate("BorrarServicio", "No. de identificacion"))
+
+    def erase(self, VentanaServico):
+        data = self.IngresoCodigo_2.toPlainText()
+        servicio = Service()
+        servicio.delete(data, property="numero")

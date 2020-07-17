@@ -8,6 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from vehicles import Vehicles
 
 
 class Ui_BorrarVehiculo(object):
@@ -42,6 +43,8 @@ class Ui_BorrarVehiculo(object):
 
         self.retranslateUi(BorrarVehiculo)
         self.ConfirmarBorrarV.clicked.connect(self.IngresoPlaca.selectAll)
+        self.ConfirmarBorrarV.clicked.connect(self.erase)
+        self.ConfirmarBorrarV.clicked.connect(BorrarVehiculo.close)
         QtCore.QMetaObject.connectSlotsByName(BorrarVehiculo)
 
     def retranslateUi(self, BorrarVehiculo):
@@ -50,3 +53,8 @@ class Ui_BorrarVehiculo(object):
         self.ConfirmarBorrarV.setText(_translate("BorrarVehiculo", "Borrar"))
         self.CancelarBorrarV.setText(_translate("BorrarVehiculo", "Cancelar"))
         self.TxtID.setText(_translate("BorrarVehiculo", "No. de identificacion"))
+
+    def erase(self, VentanaVehiculo):
+        data = self.IngresoPlaca.toPlainText()
+        vehicle = Vehicles()
+        vehicle.delete(data, property= "placa")
