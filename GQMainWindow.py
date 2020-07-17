@@ -12,6 +12,8 @@ from Windows.MainWindow import Ui_MainWindow
 # from ListarServicio import Ui_ListarServicio
 # from BuscarFactura import Ui_BuscarFactura
 
+from Windows.BuscarFactura import Ui_BuscarF
+from Windows.CreaF import Ui_Crear_Factura
 from Windows.VehiclesWindow import VehiclesWindow
 from Windows.CustomersWindow import CustomersWindow
 from Windows.ServicesWindow import ServicesWindow
@@ -38,8 +40,20 @@ class Window(QtWidgets.QMainWindow):
         # self.ui.BotonBorrarS.clicked.connect(self.abrirBorrarS)
         # self.ui.BotonListarS.clicked.connect(self.abrirListaS)
         # self.ui.BuscarFactura.clicked.connect(self.buscarFactura)
-        # self.ui.CrearFactura.clicked.connect(self.crearF)
+        self.ui.CrearFactura.clicked.connect(self.crearF)
+        self.ui.BuscarFactura.clicked.connect(self.buscarF)
 
+    def crearF(self):
+         self.crear = QtWidgets.QMainWindow()
+         self.ui = Ui_Crear_Factura()
+         self.ui.setupUi(self.crear)
+         self.crear.show()
+
+    def buscarF(self):
+        self.crear = QtWidgets.QMainWindow()
+        self.ui = Ui_BuscarF()
+        self.ui.setupUi(self.crear)
+        self.crear.show()
     # def abrirCreacionC(self):
     #     self.crear = QtWidgets.QMainWindow()
     #     self.ui = Ui_VentanaCliente()
@@ -99,11 +113,7 @@ class Window(QtWidgets.QMainWindow):
     #     self.ui.setupUi(self.crear)
     #     self.crear.show()
 
-    # def crearF(self):
-    #     self.crear = QtWidgets.QMainWindow()
-    #     self.ui = Ui_VentanaFactura()
-    #     self.ui.setupUi(self.crear)
-    #     self.crear.show()
+    
     
     # def Cancelar(self):
     #     self.close()
