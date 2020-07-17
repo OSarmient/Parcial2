@@ -101,6 +101,9 @@ class ServicesWindow:
     
     def close_delete(self):
         self.windows["delete"].close()
+    
+    def close_create(self):
+        self.windows["create"].close()
 
     def show_create(self):
         form_properties = self.module.properties
@@ -122,4 +125,6 @@ class ServicesWindow:
             counter += 1 
 
         self.uis["create"].scrollArea.setLayout(complete_box_layout)
+        self.uis["create"].AceptarInfoV.clicked.connect(self.close_create)
+        self.uis["create"].CancelarInfoV.clicked.connect(self.close_create)
         self.windows["create"].show()   

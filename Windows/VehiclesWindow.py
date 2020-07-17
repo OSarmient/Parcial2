@@ -97,10 +97,29 @@ class VehiclesWindow:
     def delete(self):
         delete = self.module.delete(self.uis["delete"].UniqueProp.toPlainText(), "placa")
         if delete == False: print("No existe u vehiculo con esta placa")
-        else: print("Vehiculo eliminado")   
+        else: print("Vehiculo eliminado")  
+
+    def create(self):
+        
+        form_properties = self.module.properties
+        counter = 0
+        
+        for i in form_properties:
+            text_element = QtWidgets.QTextEdit()
+            text_element.setObjectName(i["data"].title())
+            create = self.module.insert2(self.uis["create"].text_element.toPlainText(), i["data"])
+            counter += 1
+        
+        if create == False: print("No hay vehiculo")
+        else: print("Vehiculo guardado")
+
+
     
     def close_delete(self):
         self.windows["delete"].close()
+    
+    def close_create(self):
+        self.windows["create"].close()
 
     def show_create(self):
         form_properties = self.module.properties
@@ -122,4 +141,7 @@ class VehiclesWindow:
             counter += 1 
 
         self.uis["create"].scrollArea.setLayout(complete_box_layout)
+        #self.uis["create"].AceptarInfoV.clicked.connect(self.create)
+        self.uis["create"].AceptarInfoV.clicked.connect(self.close_create)
+        self.uis["create"].CancelarInfoV.clicked.connect(self.close_create)
         self.windows["create"].show()   
