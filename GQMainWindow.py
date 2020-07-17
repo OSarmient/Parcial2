@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from MainWindow import Ui_MainWindow
+from Windows.MainWindow import Ui_MainWindow
 # from VentanaCliente import Ui_VentanaCliente
 # from VentanaVehiculo import Ui_VentanaVehiculos
 # from VentanaServicio import Ui_VentanaServicio
