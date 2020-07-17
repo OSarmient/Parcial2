@@ -1,14 +1,14 @@
 from PyQt5 import QtWidgets, QtCore
 
-from Modules.vehicles import Vehicles
-from windows.Base.Delete import Ui_Delete
-from windows.Base.Create import Ui_Create
-from windows.Base.List import Ui_List
+from Modules.service import Service
+from Windows.Base.Delete import Ui_Delete
+from Windows.Base.Create import Ui_Create
+from Windows.Base.List import Ui_List
 
-class VehiclesWindow:
+class ServicesWindow:
     def __init__(self, ui):
         self.ui = ui
-        self.vehicles = Vehicles()
+        self.module = Service()
 
         self.uis = {
             "list": Ui_List(),
@@ -17,8 +17,8 @@ class VehiclesWindow:
         }
 
         self.delete_props = {
-            "title": "Eliminar " + self.vehicles.singularity,
-            "prop": "Digite el numero de la placa",
+            "title": "Eliminar " + self.module.singularity,
+            "prop": "Digite el servicio",
         }
 
         self.table_header = []
@@ -26,21 +26,21 @@ class VehiclesWindow:
         self.windows = {}
         self.create_windows()
 
-        ui.BotonCrearV.clicked.connect(self.show_create)
-        ui.BotonBorrarV.clicked.connect(self.show_delete)
-        ui.BotonListarV.clicked.connect(self.show_list)
+        ui.BotonCrearS.clicked.connect(self.show_create)
+        ui.BotonBorrarS.clicked.connect(self.show_delete)
+        ui.BotonListarS.clicked.connect(self.show_list)
 
     def set_table_data(self, order = ""):
-        if len(self.vehicles.get_all()) > 0:
+        if len(self.module.get_all()) > 0:
 
-            all_vehicles = []
+            all_data = []
             
-            if order == "": all_vehicles = self.vehicles.get_all()
-            else: all_vehicles = self.vehicles.get_ordered_by(order)
+            if order == "": all_data = self.module.get_all()
+            else: all_data = self.module.get_ordered_by(order)
 
             validate_header = []
 
-            for i in all_vehicles[0]:
+            for i in all_data[0]:
                 validate_header.append(i.title()) 
 
             if validate_header != self.table_header:
@@ -48,11 +48,11 @@ class VehiclesWindow:
                 self.uis["list"].tableWidget.setColumnCount(len(self.table_header))
                 self.uis["list"].tableWidget.setHorizontalHeaderLabels(self.table_header)
 
-            self.uis["list"].tableWidget.setRowCount(len(all_vehicles))
+            self.uis["list"].tableWidget.setRowCount(len(all_data))
 
-            for i in range(0, len(all_vehicles)):
+            for i in range(0, len(all_data)):
                 for j in range(0, len(self.table_header)):
-                    data = QtWidgets.QTableWidgetItem(str(all_vehicles[i][self.table_header[j].lower()]))
+                    data = QtWidgets.QTableWidgetItem(str(all_data[i][self.table_header[j].lower()]))
                     self.uis["list"].tableWidget.setItem(i, j, data)
 
             self.uis["list"].tableWidget.resizeColumnsToContents()
@@ -81,8 +81,8 @@ class VehiclesWindow:
         self.set_table_data()
         self.set_combox_box_data()
 
-        if self.vehicles.plural: self.uis["list"].label.setText(_translate("List", self.vehicles.plural))
-        else: self.uis["list"].label.setText(_translate("List", self.vehicles.database_name))
+        if self.module.plural: self.uis["list"].label.setText(_translate("List", self.module.plural))
+        else: self.uis["list"].label.setText(_translate("List", self.module.database_name))
 
         self.windows["list"].show()
 
@@ -95,7 +95,7 @@ class VehiclesWindow:
         self.windows["delete"].show()
 
     def delete(self):
-        delete = self.vehicles.delete(self.uis["delete"].UniqueProp.toPlainText(), "placa")
+        delete = self.module.delete(self.uis["delete"].UniqueProp.toPlainText(), "placa")
         if delete == False: print("No existe u vehiculo con esta placa")
         else: print("Vehiculo eliminado")   
     
@@ -103,7 +103,7 @@ class VehiclesWindow:
         self.windows["delete"].close()
 
     def show_create(self):
-        form_properties = self.vehicles.properties
+        form_properties = self.module.properties
         counter= 0
 
         complete_box_layout = QtWidgets.QVBoxLayout()

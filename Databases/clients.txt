@@ -1,0 +1,4 @@
+{'noid': '1019153159', 'nombre': 'Sebastian', 'apellido': 'Torres', 'direccion': 'Cl 165', 'telefono': '22222', 'ciudad': 'Bogota', 'uid': 1, 'random': 54}
+{'noid': '1019153159', 'nombre': 'Sebastian', 'apellido': 'Torres', 'direccion': 'Cl 165', 'telefono': '22222', 'ciudad': 'Bogota', 'uid': 2, 'random': 54}
+{'noid': '1019153159', 'nombre': 'Sebastian', 'apellido': 'Torres', 'direccion': 'Cl 165', 'telefono': '22222', 'ciudad': 'Bogota', 'uid': 3, 'random': 54}
+{'noid': '1000468831', 'nombre': 'Omar', 'apellido': 'Sarmiento', 'direccion': 'Calle 183', 'telefono': '3193106140', 'ciudad': 'Bogot�', 'uid': 4, 'random': 13}

@@ -1,5 +1,5 @@
-from core.module import ModuleBase
-from bills import Facturas
+from Modules.core.module import ModuleBase
+from Modules.bills import Facturas
 
 
 class Service(ModuleBase):
@@ -7,6 +7,7 @@ class Service(ModuleBase):
         self.database_name = "service"
         self.singularity = "servicio"
         self.singular = "El servicio"
+        self.plural = "servicios"
         self.flush_singular = "un servicio"
         self.menu_options = [{
             "display": "Solicitar un servicio",

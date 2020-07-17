@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from bills import Facturas
+##from bills import Facturas
     
 
 class Ui_MainWindow(object):
@@ -128,7 +128,6 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.toolBox.setCurrentIndex(0)
-        self.MostarFactura.clicked.connect(self.get_factura)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -193,16 +192,3 @@ class Ui_MainWindow(object):
         item = self.TablaFacturas.horizontalHeaderItem(21)
         item.setText(_translate("MainWindow", "Total"))
         self.CrearFactura.setText(_translate("MainWindow", "Crear Factura"))
-
-    def get_factura(self, MainWindow):
-        factura=Facturas()
-        data =factura.get_all()
-        row = 0
-        for i in data:
-            col = 0
-            keys = i.keys()
-            for j in keys:
-                item = QtWidgets.QTableWidgetItem(str(i[j]))
-                self.TablaFacturas.setItem(row, col, item)
-                col+=1
-            row +=1

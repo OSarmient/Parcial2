@@ -1,6 +1,6 @@
-from core.module import ModuleBase
-from core.database import Database
-from core.utils import clean_console
+from Modules.core.module import ModuleBase
+from Modules.core.database import Database
+from Modules.core.utils import clean_console
 
 class Facturas(ModuleBase):  
     def __init__(self):

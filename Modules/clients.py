@@ -1,17 +1,18 @@
-from core.module import ModuleBase
+from Modules.core.module import ModuleBase
 
 
 class Clients(ModuleBase):
     def __init__(self):
         self.database_name = "clients"
         self.singularity = "cliente"
+        self.plural = "clientes"
         self.singular = "El cliente"
         self.flush_singular = "un cliente"
         self.menu_options = []
-        self.main_field = "No ID"
+        self.main_field = "noid"
         self.properties = [
             {
-                "data": "No ID",
+                "data": "noid",
                 "display": "Digite el número de identificación del cliente",
                 "value": "",
                 "type": "int",

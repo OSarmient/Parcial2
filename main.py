@@ -1,8 +1,7 @@
-from vehicles import Vehicles
-from service import Service
-from clients import Clients
-from bills import Facturas
-from core.module import ModuleBase
+from Modules.vehicles import Vehicles
+from Modules.service import Service
+from Modules.clients import Clients
+from Modules.bills import Facturas
 
 
 class Main():

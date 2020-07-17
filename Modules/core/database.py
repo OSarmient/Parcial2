@@ -6,7 +6,7 @@ import random
 class Database:
 
     def __init__(self, database_name):
-        self.__database_folder = "databases"
+        self.__database_folder = "Databases"
         self.__database_name = database_name
         self.__database_mode = "pro"
         self.__database_path = self.__database_folder + \

@@ -1,0 +1,1 @@
+{'numero': 111, 'nombre': 'Pintura', 'precio': 2, 'horas': 2, 'uid': 1, 'random': 23}
