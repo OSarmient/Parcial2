@@ -22,6 +22,7 @@ class VehiclesWindow:
         }
 
         self.table_header = []
+        self.create_inputs = []
 
         self.windows = {}
         self.create_windows()
@@ -100,21 +101,13 @@ class VehiclesWindow:
         else: print("Vehiculo eliminado")  
 
     def create(self):
-        
-        form_properties = self.module.properties
-        counter = 0
-        
-        for i in form_properties:
-            text_element = QtWidgets.QTextEdit()
-            text_element.setObjectName(i["data"].title())
-            create = self.module.insert2(self.uis["create"].text_element.toPlainText(), i["data"])
-            counter += 1
-        
-        if create == False: print("No hay vehiculo")
-        else: print("Vehiculo guardado")
+        data = {}
 
+        for i in range(0, len(self.create_inputs)):
+            data[self.module.properties[i]["data"]] = self.create_inputs[i].toPlainText()
 
-    
+        self.module.save(data)
+
     def close_delete(self):
         self.windows["delete"].close()
     
@@ -123,7 +116,6 @@ class VehiclesWindow:
 
     def show_create(self):
         form_properties = self.module.properties
-        counter= 0
 
         complete_box_layout = QtWidgets.QVBoxLayout()
 
@@ -138,10 +130,10 @@ class VehiclesWindow:
             layout.addWidget(text_element)
             input_group.setLayout(layout)
             complete_box_layout.addWidget(input_group)
-            counter += 1 
+            
+            self.create_inputs.append(text_element)
 
         self.uis["create"].scrollArea.setLayout(complete_box_layout)
-        #self.uis["create"].AceptarInfoV.clicked.connect(self.create)
-        self.uis["create"].AceptarInfoV.clicked.connect(self.close_create)
+        self.uis["create"].AceptarInfoV.clicked.connect(self.create)
         self.uis["create"].CancelarInfoV.clicked.connect(self.close_create)
         self.windows["create"].show()   
